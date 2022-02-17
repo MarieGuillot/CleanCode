@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/guessNumber.cpp
+guessNumber.hpp
+/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/guessNumber.hpp
+chrono
+-
+functional
+-
+random
+-
+
+/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/guessNumber.hpp
+iostream
+-
+
+/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/main.cpp
+iostream
+-
+guessNumber.hpp
+/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/guessNumber.hpp
+

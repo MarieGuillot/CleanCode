@@ -1,0 +1,3 @@
+/home/marie/Documents/IMAC2/Clean Code/CleanCode/build/CMakeFiles/rebuild_cache.dir
+/home/marie/Documents/IMAC2/Clean Code/CleanCode/build/CMakeFiles/edit_cache.dir
+/home/marie/Documents/IMAC2/Clean Code/CleanCode/build/CMakeFiles/SimpleCpp.dir
