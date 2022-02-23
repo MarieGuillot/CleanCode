@@ -6,8 +6,10 @@ CMakeFiles/SimpleCpp.dir/src/guessNumber.cpp.o: ../src/guessNumber.hpp
 CMakeFiles/SimpleCpp.dir/src/guessNumber.cpp.o: ../src/random.hpp
 
 CMakeFiles/SimpleCpp.dir/src/hangman.cpp.o: ../src/hangman.cpp
+CMakeFiles/SimpleCpp.dir/src/hangman.cpp.o: ../src/hangman.hpp
+CMakeFiles/SimpleCpp.dir/src/hangman.cpp.o: ../src/random.hpp
 
 CMakeFiles/SimpleCpp.dir/src/main.cpp.o: ../src/guessNumber.hpp
+CMakeFiles/SimpleCpp.dir/src/main.cpp.o: ../src/hangman.hpp
 CMakeFiles/SimpleCpp.dir/src/main.cpp.o: ../src/main.cpp
-CMakeFiles/SimpleCpp.dir/src/main.cpp.o: ../src/random.hpp
 

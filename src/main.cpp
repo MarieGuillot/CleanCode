@@ -1,8 +1,9 @@
 #include <iostream>
 #include "guessNumber.hpp"
+#include "hangman.hpp"
 
 int main()
 {
-    guessNumber gameGuessNumber;
-    gameGuessNumber.play();
+    //playGuessANumber();
+    playHangman();
 }

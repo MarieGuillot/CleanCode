@@ -1,29 +1,17 @@
 #include "guessNumber.hpp"
 #include <chrono>
 #include <functional>
+#include <iostream>
 #include <random>
+#include "random.hpp"
 
-guessNumber::guessNumber()
+bool tryNumber(const int guess, const int solution, std::string& answer)
 {
-    pickANumber();
-}
-
-void guessNumber::pickANumber()
-{
-    /* unsigned                           seed = std::chrono::system_clock::now().time_since_epoch().count();
-    std::mt19937                       generator(seed);
-    std::uniform_int_distribution<int> uniformIntDistribution(0, 100);
-    randomNumber = uniformIntDistribution(generator);*/
-    randomNumber = giveRandomIntegerNumber(0, 100);
-}
-
-bool guessNumber::tryNumber(const int guess, std::string& answer) const
-{
-    if (guess < randomNumber) {
+    if (guess < solution) {
         answer = "Greater";
         return false;
     }
-    else if (guess > randomNumber) {
+    else if (guess > solution) {
         answer = "Smaller";
         return false;
     }
@@ -33,38 +21,49 @@ bool guessNumber::tryNumber(const int guess, std::string& answer) const
     }
 }
 
-int guessNumber::getIntFromUser()
+int getIntFromUser()
 {
-    int playerNumber;
+    int playerNumber = -1;
     std::cout << "Give me a number" << std::endl;
     while (!(std::cin >> playerNumber)) {
         std::cin.clear();
-        std::cin.ignore();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cout << "Give me a NUMBER, please." << std::endl;
     }
     return playerNumber;
 }
 
-void guessNumber::play()
+bool playAgain()
 {
-    bool        game = true;
-    int         playerNumber;
-    std::string answer;
+    std::string doesThePlayerWannaPlay;
+    std::cout << "Do you want to play again ? yes/no" << std::endl;
+    std::cin >> doesThePlayerWannaPlay;
+    if (doesThePlayerWannaPlay == "no") {
+        return false;
+    }
+    else if (doesThePlayerWannaPlay != "yes") {
+        return playAgain();
+    }
+    return true;
+}
+
+void playGuessANumber()
+{
+    bool game = true;
 
     while (game) {
-        bool win = false;
-        pickANumber();
+        int randomNumber = giveRandomIntegerNumber(0, 100);
         std::cout << "I picked a number between 0 and 100" << std::endl;
+        bool win = false;
         while (!win) {
-            playerNumber = getIntFromUser();
-            win          = tryNumber(playerNumber, answer);
+            int playerNumber = getIntFromUser();
+            if (playerNumber < 0 || playerNumber > 100) {
+                std::cout << "Between 0 and 100 I said." << std::endl;
+            }
+            std::string answer;
+            win = tryNumber(playerNumber, randomNumber, answer);
             std::cout << answer << std::endl;
         }
-        std::string doesThePlayerWannaPlay;
-        std::cout << "Do you want to play again ? yes/no" << std::endl;
-        std::cin >> doesThePlayerWannaPlay;
-        if (doesThePlayerWannaPlay == "no") {
-            game = false;
-        }
+        game = playAgain();
     }
 }
