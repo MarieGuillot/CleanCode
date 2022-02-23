@@ -6,21 +6,21 @@
 
 #IncludeRegexTransform: 
 
-/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/guessNumber.cpp
-guessNumber.hpp
-/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/guessNumber.hpp
-chrono
+/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/hangman.cpp
+hangman.hpp
+/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/hangman.hpp
+array
 -
-functional
+cctype
 -
 iostream
 -
-random
+string
 -
 random.hpp
 /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/random.hpp
 
-/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/guessNumber.hpp
+/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/hangman.hpp
 
 /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/random.hpp
 chrono
