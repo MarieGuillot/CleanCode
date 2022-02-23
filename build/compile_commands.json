@@ -6,6 +6,11 @@
 },
 {
   "directory": "/home/marie/Documents/IMAC2/Clean Code/CleanCode/build",
+  "command": "/bin/clang++-10   -I\"/home/marie/Documents/IMAC2/Clean Code/CleanCode/src\"  -g   -Werror -Wall -Wextra -Wpedantic -pedantic-errors -std=gnu++17 -o CMakeFiles/SimpleCpp.dir/src/hangman.cpp.o -c \"/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/hangman.cpp\"",
+  "file": "/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/hangman.cpp"
+},
+{
+  "directory": "/home/marie/Documents/IMAC2/Clean Code/CleanCode/build",
   "command": "/bin/clang++-10   -I\"/home/marie/Documents/IMAC2/Clean Code/CleanCode/src\"  -g   -Werror -Wall -Wextra -Wpedantic -pedantic-errors -std=gnu++17 -o CMakeFiles/SimpleCpp.dir/src/main.cpp.o -c \"/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/main.cpp\"",
   "file": "/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/main.cpp"
 }

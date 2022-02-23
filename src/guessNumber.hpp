@@ -1,4 +1,5 @@
 #include <iostream>
+#include "random.hpp"
 
 class guessNumber {
 private:
@@ -8,6 +9,6 @@ public:
     guessNumber();
     void pickANumber();
     int  getIntFromUser();
-    bool tryNumber(const int guess, std::string& answer);
+    bool tryNumber(int guess, std::string& answer) const;
     void play();
 };

@@ -19,10 +19,22 @@ random
 /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/guessNumber.hpp
 iostream
 -
+random.hpp
+/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/random.hpp
 
 /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/main.cpp
 iostream
 -
 guessNumber.hpp
 /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/guessNumber.hpp
+
+/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/random.hpp
+chrono
+-
+functional
+-
+iostream
+-
+random
+-
 

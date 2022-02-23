@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "../bin/Debug/SimpleCpp"
   "../bin/Debug/SimpleCpp.pdb"
   "CMakeFiles/SimpleCpp.dir/src/guessNumber.cpp.o"
+  "CMakeFiles/SimpleCpp.dir/src/hangman.cpp.o"
   "CMakeFiles/SimpleCpp.dir/src/main.cpp.o"
 )
 

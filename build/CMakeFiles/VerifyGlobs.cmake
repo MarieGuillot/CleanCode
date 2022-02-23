@@ -6,7 +6,10 @@ file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/marie/Documents/IMAC2/C
 set(OLD_GLOB
   "/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/guessNumber.cpp"
   "/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/guessNumber.hpp"
+  "/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/hangman.cpp"
+  "/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/hangman.hpp"
   "/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/main.cpp"
+  "/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/random.hpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")

@@ -10,13 +10,14 @@ guessNumber::guessNumber()
 
 void guessNumber::pickANumber()
 {
-    unsigned                           seed = std::chrono::system_clock::now().time_since_epoch().count();
+    /* unsigned                           seed = std::chrono::system_clock::now().time_since_epoch().count();
     std::mt19937                       generator(seed);
     std::uniform_int_distribution<int> uniformIntDistribution(0, 100);
-    randomNumber = uniformIntDistribution(generator);
+    randomNumber = uniformIntDistribution(generator);*/
+    randomNumber = giveRandomIntegerNumber(0, 100);
 }
 
-bool guessNumber::tryNumber(const int guess, std::string& answer)
+bool guessNumber::tryNumber(const int guess, std::string& answer) const
 {
     if (guess < randomNumber) {
         answer = "Greater";
