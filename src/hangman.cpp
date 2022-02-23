@@ -1,4 +1,5 @@
 #include "hangman.hpp"
+#include <algorithm>
 #include <array>
 #include <cctype>
 #include <iostream>
@@ -19,30 +20,54 @@ std::string chooseARandomWord()
     return words.at(wordPosition);
 }
 
-std::string getOneLetterFromUser()
+char getOneLetterFromUser()
 {
-    std::string playerLetter = "a";
-    std::cout << "Give me a letter" << std::endl;
+    char playerLetter = 'a';
     while (!(std::cin >> playerLetter)) {
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        std::cout << "Give me a letter, please." << std::endl;
+        std::cout << "Give me one letter, please." << std::endl;
     }
-    if (playerLetter.length() > 1) {
-        std::cout << "You can try only one letter." << std::endl;
-        return getOneLetterFromUser();
-    }
-    if (!isalpha(int(playerLetter.at(0)))) {
-        std::cout << "Give me a letter, please." << std::endl;
+    if (!isalpha(playerLetter)) {
+        std::cout << "Give me a LETTER, please." << std::endl;
         return getOneLetterFromUser();
     }
     return playerLetter;
 }
 
+std::string wordMadeOfUnderscore(int numberOfLetters)
+{
+    std::string word = "";
+    while (numberOfLetters != 0) {
+        word += "_ ";
+        numberOfLetters--;
+    }
+    return word;
+}
+
+// bool isLetterInTheWord(std::string letter, std::string word)
+// {
+//     // return std::any_of(word.begin(), word.end(), [&](char word_letter) {
+//     //     return word_letter == letter[0];
+//     // });
+//     bool has_found = false;
+//     for (const char word_letter : word) {
+//         if (word_letter == letter[0]) {
+//             // modif qqpart
+//             has_found = true;
+//         }
+//     }
+//     return has_found;
+// }
+
 void playHangman()
 {
     std::string solutionWord = chooseARandomWord();
     std::cout << solutionWord << std::endl;
-    std::string playerLetter = getOneLetterFromUser();
+    std::cout << "Give me one letter (only the first letter will be used)" << std::endl;
+    char playerLetter = getOneLetterFromUser();
     std::cout << playerLetter << std::endl;
+    std::string alreadyGuessed = wordMadeOfUnderscore(solutionWord.length());
+    std::cout << alreadyGuessed << std::endl;
+    //std::cout << isLetterInTheWord(playerLetter, solutionWord) << std::endl;
 }
