@@ -16,24 +16,6 @@ string
 type_traits
 -
 
-/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/guessNumber.cpp
-guessNumber.hpp
-/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/guessNumber.hpp
-chrono
--
-functional
--
-iostream
--
-random
--
-getInputFromUser.hpp
-/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/getInputFromUser.hpp
-random.hpp
-/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/random.hpp
-
-/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/guessNumber.hpp
-
 /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/hangman.cpp
 hangman.hpp
 /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/hangman.hpp

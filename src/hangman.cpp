@@ -71,6 +71,7 @@ bool isLetterAlreadyTried(char letter, const std::string& goodLetters, const std
             std::cout << " Good letters found : " << goodLetters << ".";
         }
         std::cout << std::endl;
+
         return true;
     }
     return false;
@@ -101,12 +102,13 @@ void playHangman()
     std::string solutionWord   = chooseARandomWord();
     std::string alreadyGuessed = wordMadeOfUnderscore(solutionWord.length());
     showWithSpace(alreadyGuessed);
+    std::string goodLetters = "";
+    std::string badLetters  = "";
 
     while (solutionWord != alreadyGuessed && playerLives > 0) {
         std::cout << "You have " << playerLives << " lives." << std::endl;
-        char        playerLetter;
-        std::string goodLetters = "";
-        std::string badLetters  = "";
+        char playerLetter;
+
         do {
             std::cout << "Give me one letter (only the first letter will be used)" << std::endl;
             playerLetter = getInputFromUser<char>();
