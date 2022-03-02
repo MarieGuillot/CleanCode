@@ -45,32 +45,39 @@ std::string wordMadeOfUnderscore(int numberOfLetters)
     return word;
 }
 
-bool isLetterInTheWord(char letter, std::string word)
+bool isLetterInTheWord(char letter, std::string word, std::vector<int>& positionsOfLetter)
 {
-    bool             has_found = false;
-    std::vector<int> positionsOfLetter;
-    int              letterPosition = 0;
+    bool has_found      = false;
+    int  letterPosition = 0;
     for (const char word_letter : word) {
-        if (word_letter == letter) {
+        if (word_letter == letter || word_letter == toupper(letter) || toupper(word_letter) == letter) {
             positionsOfLetter.push_back(letterPosition);
             has_found = true;
         }
         letterPosition++;
     }
-    for (const auto& value : positionsOfLetter) {
-        std::cout << value << "\n";
-    }
     return has_found;
+}
+
+std::string replaceWithGoodLetters(std::string solutionWord, std::string word, std::vector<int> positionsOfLetter)
+{
+    for (const auto& location : positionsOfLetter) {
+        word[location * 2] = solutionWord[location];
+    }
+    return word;
 }
 
 void playHangman()
 {
     std::string solutionWord = chooseARandomWord();
     std::cout << solutionWord << std::endl;
-    std::cout << "Give me one letter (only the first letter will be used)" << std::endl;
-    char playerLetter = getOneLetterFromUser();
-    std::cout << playerLetter << std::endl;
     std::string alreadyGuessed = wordMadeOfUnderscore(solutionWord.length());
     std::cout << alreadyGuessed << std::endl;
-    std::cout << isLetterInTheWord(playerLetter, solutionWord) << std::endl;
+    std::cout << "Give me one letter (only the first letter will be used)" << std::endl;
+    char             playerLetter = getOneLetterFromUser();
+    std::vector<int> positionsOfLetter;
+    if (isLetterInTheWord(playerLetter, solutionWord, positionsOfLetter)) {
+        alreadyGuessed = replaceWithGoodLetters(solutionWord, alreadyGuessed, positionsOfLetter);
+    }
+    std::cout << alreadyGuessed << std::endl;
 }
