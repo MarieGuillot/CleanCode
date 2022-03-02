@@ -39,6 +39,16 @@ void showWithSpace(std::string word)
     std::cout << std::endl;
 }
 
+void showNumberOfLives(int numberOfLives)
+{
+    std::cout << "You have " << numberOfLives << " lives." << std::endl;
+}
+
+bool playerIsAlive(int numberOfLives)
+{
+    return numberOfLives > 0;
+}
+
 bool isLetterInTheWordAndWhere(char letter, std::string word, std::vector<int>& positionsOfLetter)
 {
     bool has_found      = false;
@@ -62,7 +72,7 @@ bool isLetterInTheWord(char letter, const std::string& word)
 
 bool isLetterAlreadyTried(char letter, const std::string& goodLetters, const std::string& badLetters)
 {
-    if (isLetterInTheWord(letter, goodLetters) || isLetterInTheWord(letter, badLetters)) {
+    if (isLetterInTheWord(static_cast<char>(toupper(letter)), goodLetters) || isLetterInTheWord(static_cast<char>(toupper(letter)), badLetters)) {
         std::cout << "You have already tried the letter " << letter << ".";
         if (!badLetters.empty()) {
             std::cout << " Bad letters tried : " << badLetters << ".";
@@ -87,13 +97,13 @@ std::string replaceWithGoodLetters(const std::string& solutionWord, std::string 
 
 void hangmanConclusion(const uint playerLives, const std::string& solutionWord)
 {
-    if (playerLives > 0) {
-        std::cout << "You win !";
+    if (playerIsAlive(playerLives)) {
+        std::cout << "You win!";
     }
     else {
         std::cout << "You die!";
     }
-    std::cout << "The word was : " << solutionWord << " " << std::endl;
+    std::cout << " The word was: " << solutionWord << " " << std::endl;
 }
 
 void playHangman()
@@ -105,21 +115,20 @@ void playHangman()
     std::string goodLetters = "";
     std::string badLetters  = "";
 
-    while (solutionWord != alreadyGuessed && playerLives > 0) {
-        std::cout << "You have " << playerLives << " lives." << std::endl;
+    while (solutionWord != alreadyGuessed && playerIsAlive(playerLives)) {
+        showNumberOfLives(playerLives);
         char playerLetter;
-
         do {
             std::cout << "Give me one letter (only the first letter will be used)" << std::endl;
             playerLetter = getInputFromUser<char>();
         } while (isLetterAlreadyTried(playerLetter, goodLetters, badLetters));
         std::vector<int> positionsOfLetter;
         if (isLetterInTheWordAndWhere(playerLetter, solutionWord, positionsOfLetter)) {
-            goodLetters += playerLetter;
+            goodLetters += toupper(playerLetter);
             alreadyGuessed = replaceWithGoodLetters(solutionWord, alreadyGuessed, positionsOfLetter);
         }
         else {
-            badLetters += playerLetter;
+            badLetters += toupper(playerLetter);
             playerLives--;
             std::cout << "The letter " << playerLetter << " is not in the word." << std::endl;
         }
