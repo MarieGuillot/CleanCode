@@ -4,6 +4,6 @@
 
 int main()
 {
-    //playGuessANumber();
+    playGuessANumber();
     playHangman();
 }

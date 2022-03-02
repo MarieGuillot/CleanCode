@@ -3,6 +3,7 @@
 #include <functional>
 #include <iostream>
 #include <random>
+#include "getInputFromUser.hpp"
 #include "random.hpp"
 
 bool tryNumber(const int guess, const int solution, std::string& answer)
@@ -19,18 +20,6 @@ bool tryNumber(const int guess, const int solution, std::string& answer)
         answer = "Congrats, you won!";
         return true;
     }
-}
-
-int getIntFromUser()
-{
-    int playerNumber = -1;
-    std::cout << "Give me a number" << std::endl;
-    while (!(std::cin >> playerNumber)) {
-        std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        std::cout << "Give me a NUMBER, please." << std::endl;
-    }
-    return playerNumber;
 }
 
 bool playAgain()
@@ -56,7 +45,8 @@ void playGuessANumber()
         std::cout << "I picked a number between 0 and 100" << std::endl;
         bool win = false;
         while (!win) {
-            int playerNumber = getIntFromUser();
+            std::cout << "Give me a number" << std::endl;
+            int playerNumber = getInputFromUser<int>();
             if (playerNumber < 0 || playerNumber > 100) {
                 std::cout << "Between 0 and 100 I said." << std::endl;
             }

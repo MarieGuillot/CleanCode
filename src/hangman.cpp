@@ -4,6 +4,7 @@
 #include <cctype>
 #include <iostream>
 #include <string>
+#include "getInputFromUser.hpp"
 #include "random.hpp"
 
 std::string chooseARandomWord()
@@ -18,21 +19,6 @@ std::string chooseARandomWord()
 
     const auto wordPosition = giveRandomIntegerNumber<size_t>(0, numberOfWords - 1);
     return words.at(wordPosition);
-}
-
-char getOneLetterFromUser()
-{
-    char playerLetter = 'a';
-    while (!(std::cin >> playerLetter)) {
-        std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        std::cout << "Give me one letter, please." << std::endl;
-    }
-    if (!isalpha(playerLetter)) {
-        std::cout << "Give me a LETTER, please." << std::endl;
-        return getOneLetterFromUser();
-    }
-    return playerLetter;
 }
 
 std::string wordMadeOfUnderscore(int numberOfLetters)
@@ -123,7 +109,7 @@ void playHangman()
         std::string badLetters  = "";
         do {
             std::cout << "Give me one letter (only the first letter will be used)" << std::endl;
-            playerLetter = getOneLetterFromUser();
+            playerLetter = getInputFromUser<char>();
         } while (isLetterAlreadyTried(playerLetter, goodLetters, badLetters));
         std::vector<int> positionsOfLetter;
         if (isLetterInTheWordAndWhere(playerLetter, solutionWord, positionsOfLetter)) {

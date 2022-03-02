@@ -1,5 +1,0 @@
-Je me permets de rajouter un doc avec des notes pour moi de code que je n'utilise pas pour l'instant dans le projet mais qui pourrait être utile.
-
-std::any_of(word.begin(), word.end(), [&](char word_letter) {
-    return word_letter == letter;
-});

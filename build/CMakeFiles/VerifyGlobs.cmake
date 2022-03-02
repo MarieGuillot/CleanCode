@@ -4,6 +4,7 @@
 # MY_SOURCES at CMakeLists.txt:19 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/*")
 set(OLD_GLOB
+  "/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/getInputFromUser.hpp"
   "/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/guessNumber.cpp"
   "/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/guessNumber.hpp"
   "/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/hangman.cpp"
