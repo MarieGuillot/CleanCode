@@ -7,7 +7,47 @@
 #include "getInputFromUser.hpp"
 #include "random.hpp"
 
-std::string chooseARandomWord()
+std::string wordMadeOfUnderscore(int numberOfLetters)
+{
+    std::string word = "";
+    while (numberOfLetters != 0) {
+        word += "_";
+        numberOfLetters--;
+    }
+    return word;
+}
+
+class hangmanWords {
+public:
+    explicit hangmanWords(const std::string& word)
+        : _solutionWord(word), _alreadyGuessed(wordMadeOfUnderscore(_solutionWord.length()))
+    {
+    }
+
+    inline bool found() { return _solutionWord == _alreadyGuessed; }
+    void        replaceGuessedWordWithGoodLetters(std::vector<int> positionsOfLetter)
+    {
+        for (const auto& location : positionsOfLetter) {
+            _alreadyGuessed[location] = _solutionWord[location];
+        }
+    }
+    void showGuessedWord()
+    {
+        for (const char word_letter : _alreadyGuessed) {
+            std::cout << word_letter << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    inline const std::string& solution() const { return _solutionWord; }
+
+private:
+    std::string _solutionWord;
+    std::string _alreadyGuessed;
+};
+
+std::string
+    chooseARandomWord()
 {
     constexpr size_t                                    numberOfWords = 4;
     static const std::array<std::string, numberOfWords> words         = {
@@ -19,24 +59,6 @@ std::string chooseARandomWord()
 
     const auto wordPosition = giveRandomIntegerNumber<size_t>(0, numberOfWords - 1);
     return words.at(wordPosition);
-}
-
-std::string wordMadeOfUnderscore(int numberOfLetters)
-{
-    std::string word = "";
-    while (numberOfLetters != 0) {
-        word += "_";
-        numberOfLetters--;
-    }
-    return word;
-}
-
-void showWithSpace(std::string word)
-{
-    for (const char word_letter : word) {
-        std::cout << word_letter << " ";
-    }
-    std::cout << std::endl;
 }
 
 void showNumberOfLives(int numberOfLives)
@@ -87,14 +109,6 @@ bool isLetterAlreadyTried(char letter, const std::string& goodLetters, const std
     return false;
 }
 
-std::string replaceWithGoodLetters(const std::string& solutionWord, std::string word, std::vector<int> positionsOfLetter)
-{
-    for (const auto& location : positionsOfLetter) {
-        word[location] = solutionWord[location];
-    }
-    return word;
-}
-
 void hangmanConclusion(const uint playerLives, const std::string& solutionWord)
 {
     if (playerIsAlive(playerLives)) {
@@ -108,14 +122,13 @@ void hangmanConclusion(const uint playerLives, const std::string& solutionWord)
 
 void playHangman()
 {
-    uint        playerLives    = 8;
-    std::string solutionWord   = chooseARandomWord();
-    std::string alreadyGuessed = wordMadeOfUnderscore(solutionWord.length());
-    showWithSpace(alreadyGuessed);
+    uint         playerLives = 8;
+    hangmanWords hangmanWords(chooseARandomWord());
+    hangmanWords.showGuessedWord();
     std::string goodLetters = "";
     std::string badLetters  = "";
 
-    while (solutionWord != alreadyGuessed && playerIsAlive(playerLives)) {
+    while (!hangmanWords.found() && playerIsAlive(playerLives)) {
         showNumberOfLives(playerLives);
         char playerLetter;
         do {
@@ -123,17 +136,17 @@ void playHangman()
             playerLetter = getInputFromUser<char>();
         } while (isLetterAlreadyTried(playerLetter, goodLetters, badLetters));
         std::vector<int> positionsOfLetter;
-        if (isLetterInTheWordAndWhere(playerLetter, solutionWord, positionsOfLetter)) {
+        if (isLetterInTheWordAndWhere(playerLetter, hangmanWords.solution(), positionsOfLetter)) {
             goodLetters += toupper(playerLetter);
-            alreadyGuessed = replaceWithGoodLetters(solutionWord, alreadyGuessed, positionsOfLetter);
+            hangmanWords.replaceGuessedWordWithGoodLetters(positionsOfLetter);
         }
         else {
             badLetters += toupper(playerLetter);
             playerLives--;
             std::cout << "The letter " << playerLetter << " is not in the word." << std::endl;
         }
-        showWithSpace(alreadyGuessed);
+        hangmanWords.showGuessedWord();
     }
 
-    hangmanConclusion(playerLives, solutionWord);
+    hangmanConclusion(playerLives, hangmanWords.solution());
 }
