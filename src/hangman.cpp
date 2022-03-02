@@ -75,19 +75,38 @@ std::string replaceWithGoodLetters(std::string solutionWord, std::string word, s
     return word;
 }
 
+void hangmanConclusion(const uint playerLives, const std::string& solutionWord)
+{
+    if (playerLives > 0) {
+        std::cout << "You win !";
+    }
+    else {
+        std::cout << "You die!";
+    }
+    std::cout << "The word was : " << solutionWord << " " << std::endl;
+}
+
 void playHangman()
 {
+    uint        playerLives    = 8;
     std::string solutionWord   = chooseARandomWord();
     std::string alreadyGuessed = wordMadeOfUnderscore(solutionWord.length());
     showWithSpace(alreadyGuessed);
-    while (solutionWord != alreadyGuessed) {
+
+    while (solutionWord != alreadyGuessed && playerLives > 0) {
+        std::cout << "You have " << playerLives << " lives." << std::endl;
         std::cout << "Give me one letter (only the first letter will be used)" << std::endl;
         char             playerLetter = getOneLetterFromUser();
         std::vector<int> positionsOfLetter;
         if (isLetterInTheWord(playerLetter, solutionWord, positionsOfLetter)) {
             alreadyGuessed = replaceWithGoodLetters(solutionWord, alreadyGuessed, positionsOfLetter);
         }
+        else {
+            playerLives--;
+            std::cout << "The letter " << playerLetter << " is not in the word." << std::endl;
+        }
         showWithSpace(alreadyGuessed);
     }
-    std::cout << "You win ! The word was : " << solutionWord << " " << std::endl;
+
+    hangmanConclusion(playerLives, solutionWord);
 }
