@@ -53,7 +53,7 @@ void showWithSpace(std::string word)
     std::cout << std::endl;
 }
 
-bool isLetterInTheWord(char letter, std::string word, std::vector<int>& positionsOfLetter)
+bool isLetterInTheWordAndWhere(char letter, std::string word, std::vector<int>& positionsOfLetter)
 {
     bool has_found      = false;
     int  letterPosition = 0;
@@ -67,7 +67,30 @@ bool isLetterInTheWord(char letter, std::string word, std::vector<int>& position
     return has_found;
 }
 
-std::string replaceWithGoodLetters(std::string solutionWord, std::string word, std::vector<int> positionsOfLetter)
+bool isLetterInTheWord(char letter, const std::string& word)
+{
+    return std::any_of(word.begin(), word.end(), [&](char word_letter) {
+        return word_letter == letter;
+    });
+}
+
+bool isLetterAlreadyTried(char letter, const std::string& goodLetters, const std::string& badLetters)
+{
+    if (isLetterInTheWord(letter, goodLetters) || isLetterInTheWord(letter, badLetters)) {
+        std::cout << "You have already tried the letter " << letter << ".";
+        if (!badLetters.empty()) {
+            std::cout << " Bad letters tried : " << badLetters << ".";
+        }
+        if (!goodLetters.empty()) {
+            std::cout << " Good letters found : " << goodLetters << ".";
+        }
+        std::cout << std::endl;
+        return true;
+    }
+    return false;
+}
+
+std::string replaceWithGoodLetters(const std::string& solutionWord, std::string word, std::vector<int> positionsOfLetter)
 {
     for (const auto& location : positionsOfLetter) {
         word[location] = solutionWord[location];
@@ -95,13 +118,20 @@ void playHangman()
 
     while (solutionWord != alreadyGuessed && playerLives > 0) {
         std::cout << "You have " << playerLives << " lives." << std::endl;
-        std::cout << "Give me one letter (only the first letter will be used)" << std::endl;
-        char             playerLetter = getOneLetterFromUser();
+        char        playerLetter;
+        std::string goodLetters = "";
+        std::string badLetters  = "";
+        do {
+            std::cout << "Give me one letter (only the first letter will be used)" << std::endl;
+            playerLetter = getOneLetterFromUser();
+        } while (isLetterAlreadyTried(playerLetter, goodLetters, badLetters));
         std::vector<int> positionsOfLetter;
-        if (isLetterInTheWord(playerLetter, solutionWord, positionsOfLetter)) {
+        if (isLetterInTheWordAndWhere(playerLetter, solutionWord, positionsOfLetter)) {
+            goodLetters += playerLetter;
             alreadyGuessed = replaceWithGoodLetters(solutionWord, alreadyGuessed, positionsOfLetter);
         }
         else {
+            badLetters += playerLetter;
             playerLives--;
             std::cout << "The letter " << playerLetter << " is not in the word." << std::endl;
         }
