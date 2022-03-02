@@ -39,10 +39,18 @@ std::string wordMadeOfUnderscore(int numberOfLetters)
 {
     std::string word = "";
     while (numberOfLetters != 0) {
-        word += "_ ";
+        word += "_";
         numberOfLetters--;
     }
     return word;
+}
+
+void showWithSpace(std::string word)
+{
+    for (const char word_letter : word) {
+        std::cout << word_letter << " ";
+    }
+    std::cout << std::endl;
 }
 
 bool isLetterInTheWord(char letter, std::string word, std::vector<int>& positionsOfLetter)
@@ -62,22 +70,24 @@ bool isLetterInTheWord(char letter, std::string word, std::vector<int>& position
 std::string replaceWithGoodLetters(std::string solutionWord, std::string word, std::vector<int> positionsOfLetter)
 {
     for (const auto& location : positionsOfLetter) {
-        word[location * 2] = solutionWord[location];
+        word[location] = solutionWord[location];
     }
     return word;
 }
 
 void playHangman()
 {
-    std::string solutionWord = chooseARandomWord();
-    std::cout << solutionWord << std::endl;
+    std::string solutionWord   = chooseARandomWord();
     std::string alreadyGuessed = wordMadeOfUnderscore(solutionWord.length());
-    std::cout << alreadyGuessed << std::endl;
-    std::cout << "Give me one letter (only the first letter will be used)" << std::endl;
-    char             playerLetter = getOneLetterFromUser();
-    std::vector<int> positionsOfLetter;
-    if (isLetterInTheWord(playerLetter, solutionWord, positionsOfLetter)) {
-        alreadyGuessed = replaceWithGoodLetters(solutionWord, alreadyGuessed, positionsOfLetter);
+    showWithSpace(alreadyGuessed);
+    while (solutionWord != alreadyGuessed) {
+        std::cout << "Give me one letter (only the first letter will be used)" << std::endl;
+        char             playerLetter = getOneLetterFromUser();
+        std::vector<int> positionsOfLetter;
+        if (isLetterInTheWord(playerLetter, solutionWord, positionsOfLetter)) {
+            alreadyGuessed = replaceWithGoodLetters(solutionWord, alreadyGuessed, positionsOfLetter);
+        }
+        showWithSpace(alreadyGuessed);
     }
-    std::cout << alreadyGuessed << std::endl;
+    std::cout << "You win ! The word was : " << solutionWord << " " << std::endl;
 }
