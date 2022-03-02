@@ -45,20 +45,23 @@ std::string wordMadeOfUnderscore(int numberOfLetters)
     return word;
 }
 
-// bool isLetterInTheWord(std::string letter, std::string word)
-// {
-//     // return std::any_of(word.begin(), word.end(), [&](char word_letter) {
-//     //     return word_letter == letter[0];
-//     // });
-//     bool has_found = false;
-//     for (const char word_letter : word) {
-//         if (word_letter == letter[0]) {
-//             // modif qqpart
-//             has_found = true;
-//         }
-//     }
-//     return has_found;
-// }
+bool isLetterInTheWord(char letter, std::string word)
+{
+    bool             has_found = false;
+    std::vector<int> positionsOfLetter;
+    int              letterPosition = 0;
+    for (const char word_letter : word) {
+        if (word_letter == letter) {
+            positionsOfLetter.push_back(letterPosition);
+            has_found = true;
+        }
+        letterPosition++;
+    }
+    for (const auto& value : positionsOfLetter) {
+        std::cout << value << "\n";
+    }
+    return has_found;
+}
 
 void playHangman()
 {
@@ -69,5 +72,5 @@ void playHangman()
     std::cout << playerLetter << std::endl;
     std::string alreadyGuessed = wordMadeOfUnderscore(solutionWord.length());
     std::cout << alreadyGuessed << std::endl;
-    //std::cout << isLetterInTheWord(playerLetter, solutionWord) << std::endl;
+    std::cout << isLetterInTheWord(playerLetter, solutionWord) << std::endl;
 }
