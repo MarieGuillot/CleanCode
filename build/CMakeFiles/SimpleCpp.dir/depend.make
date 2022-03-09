@@ -11,7 +11,17 @@ CMakeFiles/SimpleCpp.dir/src/hangman.cpp.o: ../src/hangman.cpp
 CMakeFiles/SimpleCpp.dir/src/hangman.cpp.o: ../src/hangman.hpp
 CMakeFiles/SimpleCpp.dir/src/hangman.cpp.o: ../src/random.hpp
 
+CMakeFiles/SimpleCpp.dir/src/main.cpp.o: ../src/game.hpp
+CMakeFiles/SimpleCpp.dir/src/main.cpp.o: ../src/getInputFromUser.hpp
 CMakeFiles/SimpleCpp.dir/src/main.cpp.o: ../src/guessNumber.hpp
 CMakeFiles/SimpleCpp.dir/src/main.cpp.o: ../src/hangman.hpp
 CMakeFiles/SimpleCpp.dir/src/main.cpp.o: ../src/main.cpp
+CMakeFiles/SimpleCpp.dir/src/main.cpp.o: ../src/playAgain.hpp
+
+CMakeFiles/SimpleCpp.dir/src/menu.cpp.o: ../src/guessNumber.hpp
+CMakeFiles/SimpleCpp.dir/src/menu.cpp.o: ../src/hangman.hpp
+CMakeFiles/SimpleCpp.dir/src/menu.cpp.o: ../src/menu.cpp
+
+CMakeFiles/SimpleCpp.dir/src/playAgain.cpp.o: ../src/playAgain.cpp
+CMakeFiles/SimpleCpp.dir/src/playAgain.cpp.o: ../src/playAgain.hpp
 

@@ -12,6 +12,16 @@ CMakeFiles/SimpleCpp.dir/src/hangman.cpp.o
  /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/hangman.hpp
  /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/random.hpp
 CMakeFiles/SimpleCpp.dir/src/main.cpp.o
+ /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/game.hpp
+ /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/getInputFromUser.hpp
  /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/guessNumber.hpp
  /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/hangman.hpp
  /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/main.cpp
+ /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/playAgain.hpp
+CMakeFiles/SimpleCpp.dir/src/menu.cpp.o
+ /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/guessNumber.hpp
+ /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/hangman.hpp
+ /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/menu.cpp
+CMakeFiles/SimpleCpp.dir/src/playAgain.cpp.o
+ /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/playAgain.cpp
+ /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/playAgain.hpp

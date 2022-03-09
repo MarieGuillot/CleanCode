@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/game.hpp
+playAgain.hpp
+/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/playAgain.hpp
+
 /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/getInputFromUser.hpp
 iostream
 -
@@ -16,33 +20,25 @@ string
 type_traits
 -
 
-/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/hangman.cpp
-hangman.hpp
+/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/guessNumber.hpp
+
 /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/hangman.hpp
-algorithm
--
-array
--
-cctype
--
+
+/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/main.cpp
 iostream
 -
-string
+vector
 -
+game.hpp
+/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/game.hpp
 getInputFromUser.hpp
 /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/getInputFromUser.hpp
-random.hpp
-/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/random.hpp
-
+guessNumber.hpp
+/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/guessNumber.hpp
+hangman.hpp
 /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/hangman.hpp
 
-/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/random.hpp
-chrono
--
+/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/playAgain.hpp
 functional
--
-iostream
--
-random
 -
 

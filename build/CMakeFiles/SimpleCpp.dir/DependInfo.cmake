@@ -7,6 +7,8 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/guessNumber.cpp" "/home/marie/Documents/IMAC2/Clean Code/CleanCode/build/CMakeFiles/SimpleCpp.dir/src/guessNumber.cpp.o"
   "/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/hangman.cpp" "/home/marie/Documents/IMAC2/Clean Code/CleanCode/build/CMakeFiles/SimpleCpp.dir/src/hangman.cpp.o"
   "/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/main.cpp" "/home/marie/Documents/IMAC2/Clean Code/CleanCode/build/CMakeFiles/SimpleCpp.dir/src/main.cpp.o"
+  "/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/menu.cpp" "/home/marie/Documents/IMAC2/Clean Code/CleanCode/build/CMakeFiles/SimpleCpp.dir/src/menu.cpp.o"
+  "/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/playAgain.cpp" "/home/marie/Documents/IMAC2/Clean Code/CleanCode/build/CMakeFiles/SimpleCpp.dir/src/playAgain.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "Clang")
 

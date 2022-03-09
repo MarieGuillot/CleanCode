@@ -130,11 +130,16 @@ void playHangman()
 
     while (!hangmanWords.found() && playerIsAlive(playerLives)) {
         showNumberOfLives(playerLives);
-        char playerLetter;
-        do {
-            std::cout << "Give me one letter (only the first letter will be used)" << std::endl;
-            playerLetter = getInputFromUser<char>();
-        } while (isLetterAlreadyTried(playerLetter, goodLetters, badLetters));
+        char playerLetter = [&]() {
+            while (true) {
+                std::cout << "Give me one letter (only the first letter will be used)" << std::endl;
+                const auto letter = getInputFromUser<char>();
+                if (!isLetterAlreadyTried(letter, goodLetters, badLetters)) {
+                    return letter;
+                }
+            };
+        }();
+
         std::vector<int> positionsOfLetter;
         if (isLetterInTheWordAndWhere(playerLetter, hangmanWords.solution(), positionsOfLetter)) {
             goodLetters += toupper(playerLetter);

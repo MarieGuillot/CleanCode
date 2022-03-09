@@ -205,6 +205,60 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/SimpleCpp.dir/build.make CMakeFiles/SimpleCpp.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/menu.o: src/menu.cpp.o
+
+.PHONY : src/menu.o
+
+# target to build an object file
+src/menu.cpp.o:
+	$(MAKE) -f CMakeFiles/SimpleCpp.dir/build.make CMakeFiles/SimpleCpp.dir/src/menu.cpp.o
+.PHONY : src/menu.cpp.o
+
+src/menu.i: src/menu.cpp.i
+
+.PHONY : src/menu.i
+
+# target to preprocess a source file
+src/menu.cpp.i:
+	$(MAKE) -f CMakeFiles/SimpleCpp.dir/build.make CMakeFiles/SimpleCpp.dir/src/menu.cpp.i
+.PHONY : src/menu.cpp.i
+
+src/menu.s: src/menu.cpp.s
+
+.PHONY : src/menu.s
+
+# target to generate assembly for a file
+src/menu.cpp.s:
+	$(MAKE) -f CMakeFiles/SimpleCpp.dir/build.make CMakeFiles/SimpleCpp.dir/src/menu.cpp.s
+.PHONY : src/menu.cpp.s
+
+src/playAgain.o: src/playAgain.cpp.o
+
+.PHONY : src/playAgain.o
+
+# target to build an object file
+src/playAgain.cpp.o:
+	$(MAKE) -f CMakeFiles/SimpleCpp.dir/build.make CMakeFiles/SimpleCpp.dir/src/playAgain.cpp.o
+.PHONY : src/playAgain.cpp.o
+
+src/playAgain.i: src/playAgain.cpp.i
+
+.PHONY : src/playAgain.i
+
+# target to preprocess a source file
+src/playAgain.cpp.i:
+	$(MAKE) -f CMakeFiles/SimpleCpp.dir/build.make CMakeFiles/SimpleCpp.dir/src/playAgain.cpp.i
+.PHONY : src/playAgain.cpp.i
+
+src/playAgain.s: src/playAgain.cpp.s
+
+.PHONY : src/playAgain.s
+
+# target to generate assembly for a file
+src/playAgain.cpp.s:
+	$(MAKE) -f CMakeFiles/SimpleCpp.dir/build.make CMakeFiles/SimpleCpp.dir/src/playAgain.cpp.s
+.PHONY : src/playAgain.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -223,6 +277,12 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/menu.o"
+	@echo "... src/menu.i"
+	@echo "... src/menu.s"
+	@echo "... src/playAgain.o"
+	@echo "... src/playAgain.i"
+	@echo "... src/playAgain.s"
 .PHONY : help
 
 

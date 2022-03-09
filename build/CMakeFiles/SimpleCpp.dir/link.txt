@@ -1,1 +1,1 @@
-/bin/clang++-10  -g   CMakeFiles/SimpleCpp.dir/src/guessNumber.cpp.o CMakeFiles/SimpleCpp.dir/src/hangman.cpp.o CMakeFiles/SimpleCpp.dir/src/main.cpp.o  -o ../bin/Debug/SimpleCpp 
+/bin/clang++-10  -g   CMakeFiles/SimpleCpp.dir/src/guessNumber.cpp.o CMakeFiles/SimpleCpp.dir/src/hangman.cpp.o CMakeFiles/SimpleCpp.dir/src/main.cpp.o CMakeFiles/SimpleCpp.dir/src/menu.cpp.o CMakeFiles/SimpleCpp.dir/src/playAgain.cpp.o  -o ../bin/Debug/SimpleCpp 

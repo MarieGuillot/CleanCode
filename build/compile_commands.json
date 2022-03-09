@@ -13,5 +13,15 @@
   "directory": "/home/marie/Documents/IMAC2/Clean Code/CleanCode/build",
   "command": "/bin/clang++-10   -I\"/home/marie/Documents/IMAC2/Clean Code/CleanCode/src\"  -g   -Werror -Wall -Wextra -Wpedantic -pedantic-errors -std=gnu++17 -o CMakeFiles/SimpleCpp.dir/src/main.cpp.o -c \"/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/main.cpp\"",
   "file": "/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/main.cpp"
+},
+{
+  "directory": "/home/marie/Documents/IMAC2/Clean Code/CleanCode/build",
+  "command": "/bin/clang++-10   -I\"/home/marie/Documents/IMAC2/Clean Code/CleanCode/src\"  -g   -Werror -Wall -Wextra -Wpedantic -pedantic-errors -std=gnu++17 -o CMakeFiles/SimpleCpp.dir/src/menu.cpp.o -c \"/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/menu.cpp\"",
+  "file": "/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/menu.cpp"
+},
+{
+  "directory": "/home/marie/Documents/IMAC2/Clean Code/CleanCode/build",
+  "command": "/bin/clang++-10   -I\"/home/marie/Documents/IMAC2/Clean Code/CleanCode/src\"  -g   -Werror -Wall -Wextra -Wpedantic -pedantic-errors -std=gnu++17 -o CMakeFiles/SimpleCpp.dir/src/playAgain.cpp.o -c \"/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/playAgain.cpp\"",
+  "file": "/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/playAgain.cpp"
 }
 ]

@@ -4,6 +4,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/SimpleCpp.dir/src/guessNumber.cpp.o"
   "CMakeFiles/SimpleCpp.dir/src/hangman.cpp.o"
   "CMakeFiles/SimpleCpp.dir/src/main.cpp.o"
+  "CMakeFiles/SimpleCpp.dir/src/menu.cpp.o"
+  "CMakeFiles/SimpleCpp.dir/src/playAgain.cpp.o"
 )
 
 # Per-language clean rules from dependency scanning.
