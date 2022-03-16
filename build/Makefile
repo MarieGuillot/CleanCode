@@ -56,6 +56,52 @@ CMAKE_BINARY_DIR = "/home/marie/Documents/IMAC2/Clean Code/CleanCode/build"
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -123,6 +169,136 @@ SimpleCpp: cmake_check_build_system
 SimpleCpp/fast:
 	$(MAKE) -f CMakeFiles/SimpleCpp.dir/build.make CMakeFiles/SimpleCpp.dir/build
 .PHONY : SimpleCpp/fast
+
+#=============================================================================
+# Target rules for targets named p6
+
+# Build rule for target.
+p6: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 p6
+.PHONY : p6
+
+# fast build rule for target.
+p6/fast:
+	$(MAKE) -f lib/p6/CMakeFiles/p6.dir/build.make lib/p6/CMakeFiles/p6.dir/build
+.PHONY : p6/fast
+
+#=============================================================================
+# Target rules for targets named glpp-extended
+
+# Build rule for target.
+glpp-extended: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 glpp-extended
+.PHONY : glpp-extended
+
+# fast build rule for target.
+glpp-extended/fast:
+	$(MAKE) -f lib/p6/third-party/glpp-extended/CMakeFiles/glpp-extended.dir/build.make lib/p6/third-party/glpp-extended/CMakeFiles/glpp-extended.dir/build
+.PHONY : glpp-extended/fast
+
+#=============================================================================
+# Target rules for targets named glad
+
+# Build rule for target.
+glad: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 glad
+.PHONY : glad
+
+# fast build rule for target.
+glad/fast:
+	$(MAKE) -f lib/p6/third-party/glpp-extended/lib/glpp/CMakeFiles/glad.dir/build.make lib/p6/third-party/glpp-extended/lib/glpp/CMakeFiles/glad.dir/build
+.PHONY : glad/fast
+
+#=============================================================================
+# Target rules for targets named glpp
+
+# Build rule for target.
+glpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 glpp
+.PHONY : glpp
+
+# fast build rule for target.
+glpp/fast:
+	$(MAKE) -f lib/p6/third-party/glpp-extended/lib/glpp/CMakeFiles/glpp.dir/build.make lib/p6/third-party/glpp-extended/lib/glpp/CMakeFiles/glpp.dir/build
+.PHONY : glpp/fast
+
+#=============================================================================
+# Target rules for targets named uninstall
+
+# Build rule for target.
+uninstall: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 uninstall
+.PHONY : uninstall
+
+# fast build rule for target.
+uninstall/fast:
+	$(MAKE) -f lib/p6/third-party/glpp-extended/lib/glm/CMakeFiles/uninstall.dir/build.make lib/p6/third-party/glpp-extended/lib/glm/CMakeFiles/uninstall.dir/build
+.PHONY : uninstall/fast
+
+#=============================================================================
+# Target rules for targets named stb_image
+
+# Build rule for target.
+stb_image: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 stb_image
+.PHONY : stb_image
+
+# fast build rule for target.
+stb_image/fast:
+	$(MAKE) -f lib/p6/third-party/img/CMakeFiles/stb_image.dir/build.make lib/p6/third-party/img/CMakeFiles/stb_image.dir/build
+.PHONY : stb_image/fast
+
+#=============================================================================
+# Target rules for targets named img
+
+# Build rule for target.
+img: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 img
+.PHONY : img
+
+# fast build rule for target.
+img/fast:
+	$(MAKE) -f lib/p6/third-party/img/CMakeFiles/img.dir/build.make lib/p6/third-party/img/CMakeFiles/img.dir/build
+.PHONY : img/fast
+
+#=============================================================================
+# Target rules for targets named update_mappings
+
+# Build rule for target.
+update_mappings: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 update_mappings
+.PHONY : update_mappings
+
+# fast build rule for target.
+update_mappings/fast:
+	$(MAKE) -f lib/p6/third-party/glfw/src/CMakeFiles/update_mappings.dir/build.make lib/p6/third-party/glfw/src/CMakeFiles/update_mappings.dir/build
+.PHONY : update_mappings/fast
+
+#=============================================================================
+# Target rules for targets named glfw
+
+# Build rule for target.
+glfw: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 glfw
+.PHONY : glfw
+
+# fast build rule for target.
+glfw/fast:
+	$(MAKE) -f lib/p6/third-party/glfw/src/CMakeFiles/glfw.dir/build.make lib/p6/third-party/glfw/src/CMakeFiles/glfw.dir/build
+.PHONY : glfw/fast
+
+#=============================================================================
+# Target rules for targets named docs
+
+# Build rule for target.
+docs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 docs
+.PHONY : docs
+
+# fast build rule for target.
+docs/fast:
+	$(MAKE) -f lib/p6/third-party/glfw/docs/CMakeFiles/docs.dir/build.make lib/p6/third-party/glfw/docs/CMakeFiles/docs.dir/build
+.PHONY : docs/fast
 
 src/guessNumber.o: src/guessNumber.cpp.o
 
@@ -232,6 +408,33 @@ src/menu.cpp.s:
 	$(MAKE) -f CMakeFiles/SimpleCpp.dir/build.make CMakeFiles/SimpleCpp.dir/src/menu.cpp.s
 .PHONY : src/menu.cpp.s
 
+src/noughtsAndCrosses.o: src/noughtsAndCrosses.cpp.o
+
+.PHONY : src/noughtsAndCrosses.o
+
+# target to build an object file
+src/noughtsAndCrosses.cpp.o:
+	$(MAKE) -f CMakeFiles/SimpleCpp.dir/build.make CMakeFiles/SimpleCpp.dir/src/noughtsAndCrosses.cpp.o
+.PHONY : src/noughtsAndCrosses.cpp.o
+
+src/noughtsAndCrosses.i: src/noughtsAndCrosses.cpp.i
+
+.PHONY : src/noughtsAndCrosses.i
+
+# target to preprocess a source file
+src/noughtsAndCrosses.cpp.i:
+	$(MAKE) -f CMakeFiles/SimpleCpp.dir/build.make CMakeFiles/SimpleCpp.dir/src/noughtsAndCrosses.cpp.i
+.PHONY : src/noughtsAndCrosses.cpp.i
+
+src/noughtsAndCrosses.s: src/noughtsAndCrosses.cpp.s
+
+.PHONY : src/noughtsAndCrosses.s
+
+# target to generate assembly for a file
+src/noughtsAndCrosses.cpp.s:
+	$(MAKE) -f CMakeFiles/SimpleCpp.dir/build.make CMakeFiles/SimpleCpp.dir/src/noughtsAndCrosses.cpp.s
+.PHONY : src/noughtsAndCrosses.cpp.s
+
 src/playAgain.o: src/playAgain.cpp.o
 
 .PHONY : src/playAgain.o
@@ -265,9 +468,23 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... install/strip"
+	@echo "... install/local"
+	@echo "... install"
+	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... SimpleCpp"
+	@echo "... p6"
+	@echo "... glpp-extended"
+	@echo "... glad"
+	@echo "... glpp"
+	@echo "... uninstall"
+	@echo "... stb_image"
+	@echo "... img"
+	@echo "... update_mappings"
+	@echo "... glfw"
+	@echo "... docs"
 	@echo "... src/guessNumber.o"
 	@echo "... src/guessNumber.i"
 	@echo "... src/guessNumber.s"
@@ -280,6 +497,9 @@ help:
 	@echo "... src/menu.o"
 	@echo "... src/menu.i"
 	@echo "... src/menu.s"
+	@echo "... src/noughtsAndCrosses.o"
+	@echo "... src/noughtsAndCrosses.i"
+	@echo "... src/noughtsAndCrosses.s"
 	@echo "... src/playAgain.o"
 	@echo "... src/playAgain.i"
 	@echo "... src/playAgain.s"

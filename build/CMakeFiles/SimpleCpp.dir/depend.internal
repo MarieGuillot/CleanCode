@@ -17,11 +17,229 @@ CMakeFiles/SimpleCpp.dir/src/main.cpp.o
  /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/guessNumber.hpp
  /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/hangman.hpp
  /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/main.cpp
+ /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/noughtsAndCrosses.hpp
  /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/playAgain.hpp
 CMakeFiles/SimpleCpp.dir/src/menu.cpp.o
  /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/guessNumber.hpp
  /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/hangman.hpp
  /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/menu.cpp
+CMakeFiles/SimpleCpp.dir/src/noughtsAndCrosses.cpp.o
+ ../lib/p6/third-party/glfw/include/GLFW/glfw3.h
+ ../lib/p6/third-party/glpp-extended/include/glpp/extended.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/common.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/_fixes.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/_swizzle.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/_swizzle_func.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/_vectorize.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/compute_common.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/compute_vector_relational.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/func_common.inl
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/func_common_simd.inl
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/func_exponential.inl
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/func_exponential_simd.inl
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/func_geometric.inl
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/func_geometric_simd.inl
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/func_integer.inl
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/func_integer_simd.inl
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/func_matrix.inl
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/func_matrix_simd.inl
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/func_packing.inl
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/func_packing_simd.inl
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/func_trigonometric.inl
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/func_trigonometric_simd.inl
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/func_vector_relational.inl
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/func_vector_relational_simd.inl
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/qualifier.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/setup.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/type_half.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/type_half.inl
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/type_mat2x2.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/type_mat2x2.inl
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/type_mat2x3.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/type_mat2x3.inl
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/type_mat2x4.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/type_mat2x4.inl
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/type_mat3x2.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/type_mat3x2.inl
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/type_mat3x3.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/type_mat3x3.inl
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/type_mat3x4.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/type_mat3x4.inl
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/type_mat4x2.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/type_mat4x2.inl
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/type_mat4x3.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/type_mat4x3.inl
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/type_mat4x4.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/type_mat4x4.inl
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/type_mat4x4_simd.inl
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/type_vec1.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/type_vec1.inl
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/type_vec2.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/type_vec2.inl
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/type_vec3.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/type_vec3.inl
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/type_vec4.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/type_vec4.inl
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/detail/type_vec4_simd.inl
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/exponential.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_double2x2.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_double2x2_precision.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_double2x3.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_double2x3_precision.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_double2x4.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_double2x4_precision.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_double3x2.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_double3x2_precision.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_double3x3.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_double3x3_precision.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_double3x4.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_double3x4_precision.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_double4x2.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_double4x2_precision.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_double4x3.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_double4x3_precision.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_double4x4.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_double4x4_precision.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_float2x2.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_float2x2_precision.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_float2x3.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_float2x3_precision.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_float2x4.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_float2x4_precision.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_float3x2.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_float3x2_precision.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_float3x3.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_float3x3_precision.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_float3x4.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_float3x4_precision.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_float4x2.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_float4x2_precision.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_float4x3.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_float4x3_precision.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_float4x4.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/matrix_float4x4_precision.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/scalar_int_sized.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/scalar_uint_sized.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/vector_bool2.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/vector_bool2_precision.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/vector_bool3.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/vector_bool3_precision.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/vector_bool4.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/vector_bool4_precision.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/vector_double2.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/vector_double2_precision.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/vector_double3.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/vector_double3_precision.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/vector_double4.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/vector_double4_precision.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/vector_float2.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/vector_float2_precision.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/vector_float3.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/vector_float3_precision.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/vector_float4.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/vector_float4_precision.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/vector_int2.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/vector_int2_sized.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/vector_int3.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/vector_int3_sized.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/vector_int4.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/vector_int4_sized.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/vector_uint2.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/vector_uint2_sized.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/vector_uint3.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/vector_uint3_sized.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/vector_uint4.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/ext/vector_uint4_sized.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/fwd.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/geometric.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/glm.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/integer.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/mat2x2.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/mat2x3.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/mat2x4.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/mat3x2.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/mat3x3.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/mat3x4.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/mat4x2.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/mat4x3.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/mat4x4.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/matrix.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/packing.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/simd/common.h
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/simd/exponential.h
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/simd/geometric.h
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/simd/integer.h
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/simd/matrix.h
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/simd/neon.h
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/simd/platform.h
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/trigonometric.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/vec2.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/vec3.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/vec4.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glm/glm/vector_relational.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glpp/include/glpp/glpp.hpp
+ ../lib/p6/third-party/glpp-extended/lib/glpp/src/glpp/Enums/Channels.h
+ ../lib/p6/third-party/glpp-extended/lib/glpp/src/glpp/Enums/InternalFormat.h
+ ../lib/p6/third-party/glpp-extended/lib/glpp/src/glpp/Enums/Interpolation.h
+ ../lib/p6/third-party/glpp-extended/lib/glpp/src/glpp/Enums/ShaderType.h
+ ../lib/p6/third-party/glpp-extended/lib/glpp/src/glpp/Enums/TexelDataType.h
+ ../lib/p6/third-party/glpp-extended/lib/glpp/src/glpp/Enums/TextureKind.h
+ ../lib/p6/third-party/glpp-extended/lib/glpp/src/glpp/Enums/Wrap.h
+ ../lib/p6/third-party/glpp-extended/lib/glpp/src/glpp/Functions/Framebuffer.h
+ ../lib/p6/third-party/glpp-extended/lib/glpp/src/glpp/Functions/Miscellaneous.h
+ ../lib/p6/third-party/glpp-extended/lib/glpp/src/glpp/Functions/Program.h
+ ../lib/p6/third-party/glpp-extended/lib/glpp/src/glpp/Functions/Shader.h
+ ../lib/p6/third-party/glpp-extended/lib/glpp/src/glpp/Functions/Shader.tpp
+ ../lib/p6/third-party/glpp-extended/lib/glpp/src/glpp/Functions/Texture.h
+ ../lib/p6/third-party/glpp-extended/lib/glpp/src/glpp/Functions/Texture.tpp
+ ../lib/p6/third-party/glpp-extended/lib/glpp/src/glpp/MaybeError.h
+ ../lib/p6/third-party/glpp-extended/lib/glpp/src/glpp/UniqueHandles/UniqueBuffer.h
+ ../lib/p6/third-party/glpp-extended/lib/glpp/src/glpp/UniqueHandles/UniqueFramebuffer.h
+ ../lib/p6/third-party/glpp-extended/lib/glpp/src/glpp/UniqueHandles/UniqueProgram.h
+ ../lib/p6/third-party/glpp-extended/lib/glpp/src/glpp/UniqueHandles/UniqueShader.h
+ ../lib/p6/third-party/glpp-extended/lib/glpp/src/glpp/UniqueHandles/UniqueTexture.h
+ ../lib/p6/third-party/glpp-extended/lib/glpp/src/glpp/UniqueHandles/UniqueVertexArray.h
+ ../lib/p6/third-party/glpp-extended/lib/glpp/src/glpp/check_errors.h
+ ../lib/p6/third-party/glpp-extended/lib/glpp/src/glpp/internal/UniqueHandle.h
+ ../lib/p6/third-party/glpp-extended/lib/glpp/src/glpp/internal/assert_is_bound.h
+ ../lib/p6/third-party/glpp-extended/lib/glpp/src/glpp/internal/get_info_log.h
+ ../lib/p6/third-party/glpp-extended/lib/glpp/src/glpp/raw.h
+ ../lib/p6/third-party/glpp-extended/lib/glpp/third-party/glad/include/KHR/khrplatform.h
+ ../lib/p6/third-party/glpp-extended/lib/glpp/third-party/glad/include/glad/glad.h
+ ../lib/p6/third-party/glpp-extended/src/ImageSize.h
+ ../lib/p6/third-party/glpp-extended/src/Program.h
+ ../lib/p6/third-party/glpp-extended/src/RenderTarget.h
+ ../lib/p6/third-party/glpp-extended/src/Texture1D.h
+ ../lib/p6/third-party/glpp-extended/src/Texture2D.h
+ ../lib/p6/third-party/glpp-extended/src/Texture3D.h
+ ../lib/p6/third-party/glpp-extended/src/TextureLayout.h
+ ../lib/p6/third-party/glpp-extended/src/internal/TextureBase.h
+ ../lib/p6/third-party/glpp-extended/src/internal/TextureBase.tpp
+ ../lib/p6/third-party/op/include/op/op.hpp
+ /home/marie/Documents/IMAC2/Clean Code/CleanCode/lib/p6/include/p6/p6.h
+ /home/marie/Documents/IMAC2/Clean Code/CleanCode/lib/p6/src/Angle.h
+ /home/marie/Documents/IMAC2/Clean Code/CleanCode/lib/p6/src/Canvas.h
+ /home/marie/Documents/IMAC2/Clean Code/CleanCode/lib/p6/src/Color.h
+ /home/marie/Documents/IMAC2/Clean Code/CleanCode/lib/p6/src/Context.h
+ /home/marie/Documents/IMAC2/Clean Code/CleanCode/lib/p6/src/Image.h
+ /home/marie/Documents/IMAC2/Clean Code/CleanCode/lib/p6/src/ImageCommon.h
+ /home/marie/Documents/IMAC2/Clean Code/CleanCode/lib/p6/src/Key.h
+ /home/marie/Documents/IMAC2/Clean Code/CleanCode/lib/p6/src/MouseButton.h
+ /home/marie/Documents/IMAC2/Clean Code/CleanCode/lib/p6/src/MouseDrag.h
+ /home/marie/Documents/IMAC2/Clean Code/CleanCode/lib/p6/src/MouseMove.h
+ /home/marie/Documents/IMAC2/Clean Code/CleanCode/lib/p6/src/MouseScroll.h
+ /home/marie/Documents/IMAC2/Clean Code/CleanCode/lib/p6/src/NamedColor.h
+ /home/marie/Documents/IMAC2/Clean Code/CleanCode/lib/p6/src/Shader.h
+ /home/marie/Documents/IMAC2/Clean Code/CleanCode/lib/p6/src/Transform2D.h
+ /home/marie/Documents/IMAC2/Clean Code/CleanCode/lib/p6/src/details/RectRenderer.h
+ /home/marie/Documents/IMAC2/Clean Code/CleanCode/lib/p6/src/details/Time/Clock.h
+ /home/marie/Documents/IMAC2/Clean Code/CleanCode/lib/p6/src/details/Time/Clock_FixedTimestep.h
+ /home/marie/Documents/IMAC2/Clean Code/CleanCode/lib/p6/src/details/Time/Clock_Realtime.h
+ /home/marie/Documents/IMAC2/Clean Code/CleanCode/lib/p6/src/details/UniqueGlfwWindow.h
+ /home/marie/Documents/IMAC2/Clean Code/CleanCode/lib/p6/src/math.h
+ /home/marie/Documents/IMAC2/Clean Code/CleanCode/lib/p6/src/math_constants.h
+ /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/noughtsAndCrosses.cpp
+ /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/noughtsAndCrosses.hpp
 CMakeFiles/SimpleCpp.dir/src/playAgain.cpp.o
  /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/playAgain.cpp
  /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/playAgain.hpp

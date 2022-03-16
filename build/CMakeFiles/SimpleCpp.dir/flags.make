@@ -6,5 +6,5 @@ CXX_FLAGS = -g   -Werror -Wall -Wextra -Wpedantic -pedantic-errors -std=gnu++17
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I"/home/marie/Documents/IMAC2/Clean Code/CleanCode/src" 
+CXX_INCLUDES = -I"/home/marie/Documents/IMAC2/Clean Code/CleanCode/src" -I"/home/marie/Documents/IMAC2/Clean Code/CleanCode/lib/p6/include" -I"/home/marie/Documents/IMAC2/Clean Code/CleanCode/lib/p6/third-party/glpp-extended/include" -I"/home/marie/Documents/IMAC2/Clean Code/CleanCode/lib/p6/third-party/glpp-extended/lib/glpp/include" -I"/home/marie/Documents/IMAC2/Clean Code/CleanCode/lib/p6/third-party/glpp-extended/lib/glpp/src" -I"/home/marie/Documents/IMAC2/Clean Code/CleanCode/lib/p6/third-party/glpp-extended/lib/glpp/third-party/glad/include" -I"/home/marie/Documents/IMAC2/Clean Code/CleanCode/lib/p6/third-party/glpp-extended/lib/glm" -I"/home/marie/Documents/IMAC2/Clean Code/CleanCode/lib/p6/third-party/img/include" -I"/home/marie/Documents/IMAC2/Clean Code/CleanCode/lib/p6/third-party/op/include" -I"/home/marie/Documents/IMAC2/Clean Code/CleanCode/lib/p6/third-party/glfw/include" 
 

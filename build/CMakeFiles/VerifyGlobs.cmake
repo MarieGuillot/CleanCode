@@ -13,6 +13,8 @@ set(OLD_GLOB
   "/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/main.cpp"
   "/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/menu.cpp"
   "/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/menu.hpp"
+  "/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/noughtsAndCrosses.cpp"
+  "/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/noughtsAndCrosses.hpp"
   "/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/playAgain.cpp"
   "/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/playAgain.hpp"
   "/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/random.hpp"

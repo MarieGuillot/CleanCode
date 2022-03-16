@@ -399,3 +399,115 @@ Parsed CXX implicit link information from above output:
   implicit fwks: []
 
 
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /home/marie/Documents/IMAC2/Clean Code/CleanCode/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_0c408/fast && /usr/bin/make -f CMakeFiles/cmTC_0c408.dir/build.make CMakeFiles/cmTC_0c408.dir/build
+make[1] : on entre dans le répertoire « /home/marie/Documents/IMAC2/Clean Code/CleanCode/build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_0c408.dir/CheckIncludeFile.c.o
+/bin/clang-10    -o CMakeFiles/cmTC_0c408.dir/CheckIncludeFile.c.o   -c "/home/marie/Documents/IMAC2/Clean Code/CleanCode/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c"
+Linking C executable cmTC_0c408
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0c408.dir/link.txt --verbose=1
+/bin/clang-10      CMakeFiles/cmTC_0c408.dir/CheckIncludeFile.c.o  -o cmTC_0c408 
+make[1] : on quitte le répertoire « /home/marie/Documents/IMAC2/Clean Code/CleanCode/build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the function pthread_create exists in the pthread passed with the following output:
+Change Dir: /home/marie/Documents/IMAC2/Clean Code/CleanCode/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_ed29c/fast && /usr/bin/make -f CMakeFiles/cmTC_ed29c.dir/build.make CMakeFiles/cmTC_ed29c.dir/build
+make[1] : on entre dans le répertoire « /home/marie/Documents/IMAC2/Clean Code/CleanCode/build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_ed29c.dir/CheckFunctionExists.c.o
+/bin/clang-10   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_ed29c.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_ed29c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ed29c.dir/link.txt --verbose=1
+/bin/clang-10  -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_ed29c.dir/CheckFunctionExists.c.o  -o cmTC_ed29c  -lpthread 
+make[1] : on quitte le répertoire « /home/marie/Documents/IMAC2/Clean Code/CleanCode/build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the function XOpenDisplay exists in the /usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXext.so passed with the following output:
+Change Dir: /home/marie/Documents/IMAC2/Clean Code/CleanCode/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_2dc4b/fast && /usr/bin/make -f CMakeFiles/cmTC_2dc4b.dir/build.make CMakeFiles/cmTC_2dc4b.dir/build
+make[1] : on entre dans le répertoire « /home/marie/Documents/IMAC2/Clean Code/CleanCode/build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_2dc4b.dir/CheckFunctionExists.c.o
+/bin/clang-10   -DCHECK_FUNCTION_EXISTS=XOpenDisplay   -o CMakeFiles/cmTC_2dc4b.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_2dc4b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2dc4b.dir/link.txt --verbose=1
+/bin/clang-10  -DCHECK_FUNCTION_EXISTS=XOpenDisplay    CMakeFiles/cmTC_2dc4b.dir/CheckFunctionExists.c.o  -o cmTC_2dc4b  /usr/lib/x86_64-linux-gnu/libX11.so /usr/lib/x86_64-linux-gnu/libXext.so 
+make[1] : on quitte le répertoire « /home/marie/Documents/IMAC2/Clean Code/CleanCode/build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the function gethostbyname exists passed with the following output:
+Change Dir: /home/marie/Documents/IMAC2/Clean Code/CleanCode/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_f62fc/fast && /usr/bin/make -f CMakeFiles/cmTC_f62fc.dir/build.make CMakeFiles/cmTC_f62fc.dir/build
+make[1] : on entre dans le répertoire « /home/marie/Documents/IMAC2/Clean Code/CleanCode/build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_f62fc.dir/CheckFunctionExists.c.o
+/bin/clang-10   -DCHECK_FUNCTION_EXISTS=gethostbyname   -o CMakeFiles/cmTC_f62fc.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_f62fc
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f62fc.dir/link.txt --verbose=1
+/bin/clang-10  -DCHECK_FUNCTION_EXISTS=gethostbyname    CMakeFiles/cmTC_f62fc.dir/CheckFunctionExists.c.o  -o cmTC_f62fc 
+make[1] : on quitte le répertoire « /home/marie/Documents/IMAC2/Clean Code/CleanCode/build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the function connect exists passed with the following output:
+Change Dir: /home/marie/Documents/IMAC2/Clean Code/CleanCode/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_05fbb/fast && /usr/bin/make -f CMakeFiles/cmTC_05fbb.dir/build.make CMakeFiles/cmTC_05fbb.dir/build
+make[1] : on entre dans le répertoire « /home/marie/Documents/IMAC2/Clean Code/CleanCode/build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_05fbb.dir/CheckFunctionExists.c.o
+/bin/clang-10   -DCHECK_FUNCTION_EXISTS=connect   -o CMakeFiles/cmTC_05fbb.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_05fbb
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_05fbb.dir/link.txt --verbose=1
+/bin/clang-10  -DCHECK_FUNCTION_EXISTS=connect    CMakeFiles/cmTC_05fbb.dir/CheckFunctionExists.c.o  -o cmTC_05fbb 
+make[1] : on quitte le répertoire « /home/marie/Documents/IMAC2/Clean Code/CleanCode/build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the function remove exists passed with the following output:
+Change Dir: /home/marie/Documents/IMAC2/Clean Code/CleanCode/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_685ee/fast && /usr/bin/make -f CMakeFiles/cmTC_685ee.dir/build.make CMakeFiles/cmTC_685ee.dir/build
+make[1] : on entre dans le répertoire « /home/marie/Documents/IMAC2/Clean Code/CleanCode/build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_685ee.dir/CheckFunctionExists.c.o
+/bin/clang-10   -DCHECK_FUNCTION_EXISTS=remove   -o CMakeFiles/cmTC_685ee.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_685ee
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_685ee.dir/link.txt --verbose=1
+/bin/clang-10  -DCHECK_FUNCTION_EXISTS=remove    CMakeFiles/cmTC_685ee.dir/CheckFunctionExists.c.o  -o cmTC_685ee 
+make[1] : on quitte le répertoire « /home/marie/Documents/IMAC2/Clean Code/CleanCode/build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the function shmat exists passed with the following output:
+Change Dir: /home/marie/Documents/IMAC2/Clean Code/CleanCode/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_e4e91/fast && /usr/bin/make -f CMakeFiles/cmTC_e4e91.dir/build.make CMakeFiles/cmTC_e4e91.dir/build
+make[1] : on entre dans le répertoire « /home/marie/Documents/IMAC2/Clean Code/CleanCode/build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_e4e91.dir/CheckFunctionExists.c.o
+/bin/clang-10   -DCHECK_FUNCTION_EXISTS=shmat   -o CMakeFiles/cmTC_e4e91.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_e4e91
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e4e91.dir/link.txt --verbose=1
+/bin/clang-10  -DCHECK_FUNCTION_EXISTS=shmat    CMakeFiles/cmTC_e4e91.dir/CheckFunctionExists.c.o  -o cmTC_e4e91 
+make[1] : on quitte le répertoire « /home/marie/Documents/IMAC2/Clean Code/CleanCode/build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the function IceConnectionNumber exists in the ICE passed with the following output:
+Change Dir: /home/marie/Documents/IMAC2/Clean Code/CleanCode/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_a1ffd/fast && /usr/bin/make -f CMakeFiles/cmTC_a1ffd.dir/build.make CMakeFiles/cmTC_a1ffd.dir/build
+make[1] : on entre dans le répertoire « /home/marie/Documents/IMAC2/Clean Code/CleanCode/build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_a1ffd.dir/CheckFunctionExists.c.o
+/bin/clang-10   -DCHECK_FUNCTION_EXISTS=IceConnectionNumber   -o CMakeFiles/cmTC_a1ffd.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_a1ffd
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a1ffd.dir/link.txt --verbose=1
+/bin/clang-10  -DCHECK_FUNCTION_EXISTS=IceConnectionNumber    CMakeFiles/cmTC_a1ffd.dir/CheckFunctionExists.c.o  -o cmTC_a1ffd  -lICE 
+make[1] : on quitte le répertoire « /home/marie/Documents/IMAC2/Clean Code/CleanCode/build/CMakeFiles/CMakeTmp »
+
+
+
