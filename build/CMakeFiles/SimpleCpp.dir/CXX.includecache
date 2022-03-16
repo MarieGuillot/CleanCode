@@ -37,6 +37,16 @@ guessNumber.hpp
 /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/guessNumber.hpp
 hangman.hpp
 /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/hangman.hpp
+playAgain.hpp
+/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/playAgain.hpp
+
+/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/playAgain.cpp
+playAgain.hpp
+/home/marie/Documents/IMAC2/Clean Code/CleanCode/src/playAgain.hpp
+functional
+-
+iostream
+-
 
 /home/marie/Documents/IMAC2/Clean Code/CleanCode/src/playAgain.hpp
 functional
