@@ -1,10 +1,4 @@
 #include "guessNumber.hpp"
-#include <chrono>
-#include <functional>
-#include <iostream>
-#include <random>
-#include "getInputFromUser.hpp"
-#include "random.hpp"
 
 bool tryNumber(const int guess, const int solution, std::string& answer)
 {
