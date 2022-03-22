@@ -5,6 +5,8 @@
 #include <string>
 #include <type_traits>
 
+// Utiliser un bool qui part défaut vaut false en paramètre et le faire passer à true si je veux une lettre ?
+
 template<typename T>
 T getInputFromUser()
 {

@@ -10,6 +10,6 @@
 
 int main()
 {
-    playUntilThePlayerWantToStop(menu, false);
-    //playNoughtsAndCrosses();
+    //playUntilThePlayerWantToStop(menu, false);
+    playNoughtsAndCrosses();
 }
