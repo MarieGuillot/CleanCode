@@ -23,7 +23,7 @@ void playGuessANumber()
     bool win = false;
     while (!win) {
         std::cout << "Give me a number" << std::endl;
-        int playerNumber = getInputFromUser<int>();
+        auto playerNumber = getInputFromUser<int>();
         if (playerNumber < 0 || playerNumber > 100) {
             std::cout << "Between 0 and 100 I said." << std::endl;
         }
