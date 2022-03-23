@@ -1,4 +1,5 @@
 #include "noughtsAndCrosses.hpp"
+#include <math.h>
 #include <iostream>
 #include "../lib/p6/include/p6/p6.h"
 
@@ -14,16 +15,53 @@ void drawASquareAtIndex(CellIndex cell, size_t boardSize, p6::Context& ctx)
     ctx.square(p6::TopLeftCorner{horizontalCoordinate, verticalCoordinate}, 1. / static_cast<float>(boardSize));
 }
 
+float colorOfIndex(int x, size_t boardSize)
+{
+    return 1. / static_cast<float>(boardSize) * static_cast<float>(x);
+}
+
+void drawNoughtAtIndex(CellIndex cell, size_t boardSize, p6::Context& ctx, float alphaColor)
+{
+    const float horizontalCoordinate = p6::map<float>(static_cast<float>(cell.x), 0.f, static_cast<float>(boardSize), -1.f, 1.f);
+    const float verticalCoordinate   = p6::map<float>(static_cast<float>(cell.y), 0.f, static_cast<float>(boardSize), 1.f, -1.f);
+    const float halfSideOfCell       = 1. / boardSize;
+    ctx.fill                         = p6::Color{1.f, 1.f, 1.f, alphaColor};
+    ctx.circle(p6::Center{horizontalCoordinate + halfSideOfCell, verticalCoordinate - halfSideOfCell}, // Center on the current mouse position
+               p6::Radius{
+                   static_cast<float>(0.8 * halfSideOfCell)});
+    const float red  = colorOfIndex(static_cast<int>(cell.x), boardSize);
+    const float blue = colorOfIndex(static_cast<int>(cell.y), boardSize);
+    ctx.fill         = p6::Color{red, 1.f, blue, 1.f};
+    ctx.circle(p6::Center{horizontalCoordinate + halfSideOfCell, verticalCoordinate - halfSideOfCell}, // Center on the current mouse position
+               p6::Radius{
+                   static_cast<float>(0.5 * halfSideOfCell)});
+}
+
+void drawCrossAtIndex(CellIndex cell, size_t boardSize, p6::Context& ctx, float alphaColor)
+{
+    const float horizontalCoordinate = p6::map<float>(static_cast<float>(cell.x), 0.f, static_cast<float>(boardSize), -1.f, 1.f);
+    const float verticalCoordinate   = p6::map<float>(static_cast<float>(cell.y), 0.f, static_cast<float>(boardSize), 1.f, -1.f);
+    const float halfSideOfCell       = 1. / boardSize;
+    ctx.fill                         = p6::Color{1.f, 1.f, 1.f, alphaColor};
+    p6::Angle rotation               = p6::Angle(p6::Radians(M_PI / 4.));
+    ctx.rectangle(p6::Center{horizontalCoordinate + halfSideOfCell, verticalCoordinate - halfSideOfCell}, // Center on the current mouse position
+                  p6::Radii(halfSideOfCell / 4., halfSideOfCell),
+                  rotation);
+    ctx.rectangle(p6::Center{horizontalCoordinate + halfSideOfCell, verticalCoordinate - halfSideOfCell}, // Center on the current mouse position
+                  p6::Radii(halfSideOfCell / 4., halfSideOfCell),
+                  -rotation);
+};
+
 void drawBoard(size_t boardSize, p6::Context& ctx)
 {
     for (size_t y = 0; y < boardSize; y++) {
         for (size_t x = 0; x < boardSize; x++) {
-            const float red            = 1. / static_cast<float>(boardSize) * static_cast<float>(x);
-            const float blue           = 1. / static_cast<float>(boardSize) * static_cast<float>(y);
-            ctx.use_stroke             = false;
-            ctx.fill                   = p6::Color{red, 0.8f, blue, 1.f};
-            float horizontalCoordinate = p6::map<float>(static_cast<float>(x), 0.f, static_cast<float>(boardSize), -1.f, 1.f);
-            float verticalCoordinate   = p6::map<float>(static_cast<float>(y), 0.f, static_cast<float>(boardSize), 1.f, -1.f);
+            const float red                  = colorOfIndex(static_cast<int>(x), boardSize);
+            const float blue                 = colorOfIndex(static_cast<int>(y), boardSize);
+            ctx.use_stroke                   = false;
+            ctx.fill                         = p6::Color{red, 1.f, blue, 1.f};
+            const float horizontalCoordinate = p6::map<float>(static_cast<float>(x), 0.f, static_cast<float>(boardSize), -1.f, 1.f);
+            const float verticalCoordinate   = p6::map<float>(static_cast<float>(y), 0.f, static_cast<float>(boardSize), 1.f, -1.f);
             ctx.square(p6::TopLeftCorner{horizontalCoordinate, verticalCoordinate}, 1. / static_cast<float>(boardSize));
         }
     }
@@ -54,7 +92,9 @@ void playNoughtsAndCrosses()
             CellIndex hoveredCell = findHoveredCell(ctx.mouse(), boardSize);
             //std::cout << "x = " << hoveredCell.x << " y = " << hoveredCell.y << std::endl;
             ctx.fill = p6::Color{0.f, 0.f, 0.f, 1.f};
-            drawASquareAtIndex(hoveredCell, boardSize, ctx);
+            //drawASquareAtIndex(hoveredCell, boardSize, ctx);
+            //drawNoughtAtIndex(hoveredCell, boardSize, ctx, 0.5f);
+            drawCrossAtIndex(hoveredCell, boardSize, ctx, 0.5f);
         };
 
         // Start the program

@@ -133,7 +133,7 @@ void playHangman()
         char playerLetter = [&]() {
             while (true) {
                 std::cout << "Give me one letter (only the first letter will be used)" << std::endl;
-                const auto letter = getInputFromUser<char>();
+                const char letter = getLetterFromUser();
                 if (!isLetterAlreadyTried(letter, goodLetters, badLetters)) {
                     return letter;
                 }
