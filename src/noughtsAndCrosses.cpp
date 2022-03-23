@@ -8,6 +8,16 @@ struct CellIndex {
     int y;
 };
 
+enum class Player {
+    Cross,
+    Nought
+};
+
+Player changePlayer(Player player)
+{
+    return static_cast<Player>((static_cast<int>(player) + 1) % 2);
+}
+
 void drawASquareAtIndex(CellIndex cell, size_t boardSize, p6::Context& ctx)
 {
     float horizontalCoordinate = p6::map<float>(static_cast<float>(cell.x), 0.f, static_cast<float>(boardSize), -1.f, 1.f);
@@ -43,14 +53,26 @@ void drawCrossAtIndex(CellIndex cell, size_t boardSize, p6::Context& ctx, float 
     const float verticalCoordinate   = p6::map<float>(static_cast<float>(cell.y), 0.f, static_cast<float>(boardSize), 1.f, -1.f);
     const float halfSideOfCell       = 1. / boardSize;
     ctx.fill                         = p6::Color{1.f, 1.f, 1.f, alphaColor};
-    p6::Angle rotation               = p6::Angle(p6::Radians(M_PI / 4.));
+    auto rotation                    = p6::Angle(p6::Radians(M_PI / 4.));
     ctx.rectangle(p6::Center{horizontalCoordinate + halfSideOfCell, verticalCoordinate - halfSideOfCell}, // Center on the current mouse position
                   p6::Radii(halfSideOfCell / 4., halfSideOfCell),
                   rotation);
     ctx.rectangle(p6::Center{horizontalCoordinate + halfSideOfCell, verticalCoordinate - halfSideOfCell}, // Center on the current mouse position
                   p6::Radii(halfSideOfCell / 4., halfSideOfCell),
                   -rotation);
-};
+}
+
+void drawPlayerSymbol(CellIndex cell, size_t boardSize, p6::Context& ctx, float alphaColor, Player player)
+{
+    switch (player) {
+    case Player::Cross:
+        drawCrossAtIndex(cell, boardSize, ctx, alphaColor);
+        break;
+    case Player::Nought:
+        drawNoughtAtIndex(cell, boardSize, ctx, alphaColor);
+        break;
+    }
+}
 
 void drawBoard(size_t boardSize, p6::Context& ctx)
 {
@@ -67,13 +89,18 @@ void drawBoard(size_t boardSize, p6::Context& ctx)
     }
 }
 
-CellIndex findHoveredCell(glm::vec2 mouse, size_t boardSize)
+std::optional<CellIndex> findHoveredCell(glm::vec2 mouse, size_t boardSize)
 {
-    float horizontalCoordinate = p6::map<float>(static_cast<float>(mouse.x), -1.f, 1.f, 0.f, static_cast<float>(boardSize));
-    float verticalCoordinate   = p6::map<float>(static_cast<float>(mouse.y), 1.f, -1.f, 0.f, static_cast<float>(boardSize));
-    // std::cout << "x = " << horizontalCoordinate << " y = " << verticalCoordinate << std::endl;
-    CellIndex hoveredCell = {static_cast<int>(horizontalCoordinate), static_cast<int>(verticalCoordinate)};
-    return hoveredCell;
+    if (mouse.x >= -1 && mouse.x <= 1 && mouse.y >= -1 && mouse.y <= 1) {
+        float horizontalCoordinate = p6::map<float>(static_cast<float>(mouse.x), -1.f, 1.f, 0.f, static_cast<float>(boardSize));
+        float verticalCoordinate   = p6::map<float>(static_cast<float>(mouse.y), 1.f, -1.f, 0.f, static_cast<float>(boardSize));
+        // std::cout << "x = " << horizontalCoordinate << " y = " << verticalCoordinate << std::endl;
+        CellIndex hoveredCell = {static_cast<int>(horizontalCoordinate), static_cast<int>(verticalCoordinate)};
+        return hoveredCell;
+    }
+    else {
+        return std::nullopt;
+    }
 }
 
 void playNoughtsAndCrosses()
@@ -84,17 +111,24 @@ void playNoughtsAndCrosses()
         int    width     = 900;
         auto   ctx       = p6::Context{{height, width, "Nought And Crosses"}};
         size_t boardSize = 3;
+        Player player    = Player::Cross;
         // Define the update function. It will be called repeatedly.
         ctx.update = [&]() {
             // Clear the objects that were drawn during the previous update
             ctx.background({0.5f, 0.3f, 0.5f});
             drawBoard(boardSize, ctx);
-            CellIndex hoveredCell = findHoveredCell(ctx.mouse(), boardSize);
+            std::optional<CellIndex> hoveredCell = findHoveredCell(ctx.mouse(), boardSize);
             //std::cout << "x = " << hoveredCell.x << " y = " << hoveredCell.y << std::endl;
             ctx.fill = p6::Color{0.f, 0.f, 0.f, 1.f};
             //drawASquareAtIndex(hoveredCell, boardSize, ctx);
             //drawNoughtAtIndex(hoveredCell, boardSize, ctx, 0.5f);
-            drawCrossAtIndex(hoveredCell, boardSize, ctx, 0.5f);
+            if (hoveredCell) {
+                //drawNoughtAtIndex(*hoveredCell, boardSize, ctx, 0.5f);
+                drawPlayerSymbol(*hoveredCell, boardSize, ctx, 0.5f, player);
+            }
+            ctx.mouse_pressed = [&](p6::MouseButton) {
+                player = changePlayer(player);
+            };
         };
 
         // Start the program

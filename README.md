@@ -30,7 +30,8 @@ Template by Jules Fouchy : [Simple Cpp Setup Repo](https://github.com/JulesFouch
 ### Level 3
 :blue_book:std::vector                          
 :blue_book::blue_book: Git submodules                          
-:blue_book::blue_book: std::function                        
+:blue_book::blue_book: std::function               
+:blue_book::blue_book: std::optional                                 
 
 ## Assignments
 
