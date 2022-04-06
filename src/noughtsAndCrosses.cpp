@@ -47,6 +47,16 @@ void drawNoughtAtIndex(CellIndex cell, size_t boardSize, p6::Context& ctx, float
                    static_cast<float>(0.5 * halfSideOfCell)});
 }
 
+void drawWhiteNoughtOverTheBoard(p6::Context& ctx, p6::Color backgroundColor)
+{
+    ctx.fill = p6::Color{1.f, 1.f, 1.f, 1.f};
+    ctx.circle(p6::Center{0.f, 0.f},
+               p6::Radius{0.8f});
+    ctx.fill = backgroundColor;
+    ctx.circle(p6::Center{0.f, 0.f},
+               p6::Radius{0.5f});
+}
+
 void drawCrossAtIndex(const CellIndex cell, size_t boardSize, p6::Context& ctx, float alphaColor)
 {
     const float horizontalCoordinate = p6::map<float>(static_cast<float>(cell.x), 0.f, static_cast<float>(boardSize), -1.f, 1.f);
@@ -59,6 +69,18 @@ void drawCrossAtIndex(const CellIndex cell, size_t boardSize, p6::Context& ctx, 
                   rotation);
     ctx.rectangle(p6::Center{horizontalCoordinate + halfSideOfCell, verticalCoordinate - halfSideOfCell}, // Center on the current mouse position
                   p6::Radii(halfSideOfCell / 4., halfSideOfCell),
+                  -rotation);
+}
+
+void drawWhiteCrossOverTheBoard(p6::Context& ctx)
+{
+    ctx.fill      = p6::Color{1.f, 1.f, 1.f, 1.f};
+    auto rotation = p6::Angle(p6::Radians(M_PI / 4.));
+    ctx.rectangle(p6::Center{0.f, 0.f},
+                  p6::Radii(0.2f, 0.8f),
+                  rotation);
+    ctx.rectangle(p6::Center{0.f, 0.f},
+                  p6::Radii(0.2f, 0.8f),
                   -rotation);
 }
 
@@ -92,10 +114,9 @@ void drawBoard(size_t boardSize, p6::Context& ctx)
 std::optional<CellIndex> findHoveredCell(glm::vec2 mouse, size_t boardSize)
 {
     if (mouse.x >= -1 && mouse.x <= 1 && mouse.y >= -1 && mouse.y <= 1) {
-        float horizontalCoordinate = p6::map<float>(static_cast<float>(mouse.x), -1.f, 1.f, 0.f, static_cast<float>(boardSize));
-        float verticalCoordinate   = p6::map<float>(static_cast<float>(mouse.y), 1.f, -1.f, 0.f, static_cast<float>(boardSize));
-        // std::cout << "x = " << horizontalCoordinate << " y = " << verticalCoordinate << std::endl;
-        CellIndex hoveredCell = {static_cast<int>(horizontalCoordinate), static_cast<int>(verticalCoordinate)};
+        float     horizontalCoordinate = p6::map<float>(static_cast<float>(mouse.x), -1.f, 1.f, 0.f, static_cast<float>(boardSize));
+        float     verticalCoordinate   = p6::map<float>(static_cast<float>(mouse.y), 1.f, -1.f, 0.f, static_cast<float>(boardSize));
+        CellIndex hoveredCell          = {static_cast<int>(horizontalCoordinate), static_cast<int>(verticalCoordinate)};
         return hoveredCell;
     }
     else {
@@ -128,6 +149,81 @@ void showBoard(const std::vector<std::vector<bool>>& board, const size_t boardSi
     }
 }
 
+bool doesThePlayerWin(std::vector<CellIndex> playerCells, size_t boardSize)
+{
+    std::vector<int> numberOfCasesPossessedByThePlayer;
+    for (size_t i = 0; i < 2 * boardSize + 2; i++) {
+        numberOfCasesPossessedByThePlayer.push_back(0);
+    }
+    for (CellIndex cell : playerCells) {
+        numberOfCasesPossessedByThePlayer[cell.x]++;             //colonne
+        numberOfCasesPossessedByThePlayer[boardSize + cell.y]++; //ligne
+        if (cell.x == cell.y) {
+            numberOfCasesPossessedByThePlayer[2 * boardSize]++; //diagonale haut gauche- bas droite
+        }
+        if (cell.x == static_cast<int>(boardSize - 1 - cell.y)) {
+            numberOfCasesPossessedByThePlayer[2 * boardSize + 1]++; //diagonale haut droite-bas gauche
+        }
+    }
+
+    //remplacer par any_of
+    for (int numberOfCasesByRank : numberOfCasesPossessedByThePlayer) {
+        if (numberOfCasesByRank == static_cast<int>(boardSize)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool boardIsFull(std::vector<std::vector<bool>> board, const size_t boardSize)
+{
+    for (size_t i = 0; i < boardSize; i++) {
+        for (size_t j = 0; j < boardSize; j++) {
+            if (board[i][j] == 1) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+void checkIfTheGameIsFinished(Player player, bool& game, std::optional<Player>& winner, const std::vector<CellIndex>& playerCrossCells, const std::vector<CellIndex>& playerNoughtsCells, const std::vector<std::vector<bool>>& cellIsEmpty, size_t boardSize)
+{
+    switch (player) {
+    case Player::Cross:
+        game = !doesThePlayerWin(playerCrossCells, boardSize);
+        break;
+    case Player::Nought:
+        game = !doesThePlayerWin(playerNoughtsCells, boardSize);
+        break;
+    }
+    if (game == false) {
+        winner = player;
+    }
+
+    if (boardIsFull(cellIsEmpty, boardSize)) {
+        game = false;
+    }
+}
+
+void drawWinner(size_t boardSize, std::optional<Player> winner, p6::Context& ctx)
+{
+    const float red             = colorOfIndex(1, boardSize);
+    const float blue            = colorOfIndex(1, boardSize);
+    p6::Color   backgroundColor = p6::Color{red, 1.f, blue, 1.f};
+    ctx.background(backgroundColor);
+    if (winner != std::nullopt) {
+        switch (*winner) {
+        case Player::Cross:
+            drawWhiteCrossOverTheBoard(ctx);
+            break;
+        case Player::Nought:
+            drawWhiteNoughtOverTheBoard(ctx, backgroundColor);
+            break;
+        }
+    }
+}
+
 void playNoughtsAndCrosses()
 {
     try {
@@ -138,54 +234,33 @@ void playNoughtsAndCrosses()
         size_t                         boardSize   = 3;
         Player                         player      = Player::Cross; //player 1 takes Crosses, player 2 takes Noughts
         std::vector<std::vector<bool>> cellIsEmpty = createEmptyBoard(boardSize);
-        showBoard(cellIsEmpty, boardSize);
+        //showBoard(cellIsEmpty, boardSize);
         std::vector<CellIndex>   playerCrossCells;
         std::vector<CellIndex>   playerNoughtsCells;
         std::optional<CellIndex> hoveredCell = std::nullopt;
         bool                     game        = true;
+        std::optional<Player>    winner      = std::nullopt;
 
         // Define the update function. It will be called repeatedly.
         ctx.update = [&]() {
             // Clear the objects that were drawn during the previous update
-            ctx.background({0.5f, 0.3f, 0.5f});
 
-            drawBoard(boardSize, ctx);
-            hoveredCell = findHoveredCell(ctx.mouse(), boardSize);
-            ctx.fill    = p6::Color{0.f, 0.f, 0.f, 1.f};
-            if (hoveredCell) {
-                drawPlayerSymbol(*hoveredCell, boardSize, ctx, 0.5f, player);
-            }
-
-            for (CellIndex cell : playerCrossCells) {
-                drawPlayerSymbol(cell, boardSize, ctx, 1.f, Player::Cross);
-            }
-            for (CellIndex cell : playerNoughtsCells) {
-                drawPlayerSymbol(cell, boardSize, ctx, 1.f, Player::Nought);
-            }
-
-            std::vector<int> numberOfCasesPossessedByThePlayer;
-            for (size_t i = 0; i < 2 * boardSize + 2; i++) {
-                numberOfCasesPossessedByThePlayer.push_back(0);
-            }
-            for (CellIndex cell : playerCrossCells) {
-                numberOfCasesPossessedByThePlayer[cell.x]++;             //colonne
-                numberOfCasesPossessedByThePlayer[boardSize + cell.y]++; //ligne
-                if (cell.x == cell.y) {
-                    numberOfCasesPossessedByThePlayer[2 * boardSize]++; //diagonale haut gauche- bas droite
+            if (game) {
+                drawBoard(boardSize, ctx);
+                hoveredCell = findHoveredCell(ctx.mouse(), boardSize);
+                if (hoveredCell) {
+                    drawPlayerSymbol(*hoveredCell, boardSize, ctx, 0.5f, player);
                 }
-                if (cell.x == static_cast<int>(boardSize - 1 - cell.y)) {
-                    numberOfCasesPossessedByThePlayer[2 * boardSize + 1]++; //diagonale haut droite-bas gauche
+
+                for (CellIndex cell : playerCrossCells) {
+                    drawPlayerSymbol(cell, boardSize, ctx, 1.f, Player::Cross);
+                }
+                for (CellIndex cell : playerNoughtsCells) {
+                    drawPlayerSymbol(cell, boardSize, ctx, 1.f, Player::Nought);
                 }
             }
-            int compteur = 0;
-            for (int numberOfCasesByRank : numberOfCasesPossessedByThePlayer) {
-                //std::cout << "rank " << compteur << " " << numberOfCasesByRank << std::endl;
-                compteur++;
-                if (numberOfCasesByRank == static_cast<int>(boardSize)) {
-                    std::cout << "cross wins" << std::endl;
-                    game = false;
-                    break;
-                }
+            else {
+                drawWinner(boardSize, winner, ctx);
             }
         };
 
@@ -200,6 +275,9 @@ void playNoughtsAndCrosses()
                     playerNoughtsCells.push_back({hoveredCell->x, hoveredCell->y});
                     break;
                 }
+
+                checkIfTheGameIsFinished(player, game, winner, playerCrossCells, playerNoughtsCells, cellIsEmpty, boardSize);
+
                 player = changePlayer(player);
             }
         };
