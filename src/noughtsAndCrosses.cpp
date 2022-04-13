@@ -280,6 +280,10 @@ void playNoughtsAndCrosses()
         };
 
         ctx.mouse_pressed = [&](p6::MouseButton) {
+            if (!game) {
+                ctx.stop();
+            }
+
             if (cellIsEmpty[hoveredCell->x][hoveredCell->y]) {
                 cellIsEmpty[hoveredCell->x][hoveredCell->y] = false;
                 switch (player) {

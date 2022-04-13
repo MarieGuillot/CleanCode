@@ -13,10 +13,12 @@ void menu()
 {
     Game hangman("Hangman", &playHangman);
     Game guessNumber("Guess a number", &playGuessANumber);
+    Game NoughtsAndCrosses("Noughts and crosses", &playNoughtsAndCrosses);
 
     std::vector<Game> games;
     games.push_back(hangman);
     games.push_back(guessNumber);
+    games.push_back(NoughtsAndCrosses);
 
     std::cout << "Select the game you want to play." << std::endl;
     for (size_t index = 0; index < games.size(); index++) {
