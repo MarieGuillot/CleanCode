@@ -13,6 +13,19 @@ enum class Player {
     Nought
 };
 
+struct Coordinates {
+    float x;
+    float y;
+};
+
+Coordinates convertIntoWindowCoordinates(int x, int y, size_t boardSize)
+{
+    float       windowX           = p6::map<float>(static_cast<float>(x), 0.f, static_cast<float>(boardSize), -1.f, 1.f);
+    float       windowY           = p6::map<float>(static_cast<float>(y), 0.f, static_cast<float>(boardSize), 1.f, -1.f);
+    Coordinates WindowCoordinates = {windowX, windowY};
+    return WindowCoordinates;
+}
+
 Player changePlayer(Player player)
 {
     return static_cast<Player>((static_cast<int>(player) + 1) % 2);
@@ -20,29 +33,33 @@ Player changePlayer(Player player)
 
 void drawASquareAtIndex(CellIndex cell, size_t boardSize, p6::Context& ctx)
 {
-    float horizontalCoordinate = p6::map<float>(static_cast<float>(cell.x), 0.f, static_cast<float>(boardSize), -1.f, 1.f);
-    float verticalCoordinate   = p6::map<float>(static_cast<float>(cell.y), 0.f, static_cast<float>(boardSize), 1.f, -1.f);
-    ctx.square(p6::TopLeftCorner{horizontalCoordinate, verticalCoordinate}, 1. / static_cast<float>(boardSize));
+    Coordinates coordinates = convertIntoWindowCoordinates(cell.x, cell.y, boardSize);
+    ctx.square(p6::TopLeftCorner{coordinates.x, coordinates.y}, 1.f / static_cast<float>(boardSize));
 }
 
 float colorOfIndex(int x, size_t boardSize)
 {
-    return 1. / static_cast<float>(boardSize) * static_cast<float>(x);
+    return 1.f / static_cast<float>(boardSize) * static_cast<float>(x);
+}
+
+p6::Color colorOfPosition(int x, int y, size_t boardSize)
+{
+    const float red  = colorOfIndex(static_cast<int>(x), boardSize);
+    const float blue = colorOfIndex(static_cast<int>(y), boardSize);
+    return p6::Color{red, 1.f, blue, 1.f};
 }
 
 void drawNoughtAtIndex(CellIndex cell, size_t boardSize, p6::Context& ctx, float alphaColor)
 {
-    const float horizontalCoordinate = p6::map<float>(static_cast<float>(cell.x), 0.f, static_cast<float>(boardSize), -1.f, 1.f);
-    const float verticalCoordinate   = p6::map<float>(static_cast<float>(cell.y), 0.f, static_cast<float>(boardSize), 1.f, -1.f);
-    const float halfSideOfCell       = 1. / boardSize;
-    ctx.fill                         = p6::Color{1.f, 1.f, 1.f, alphaColor};
-    ctx.circle(p6::Center{horizontalCoordinate + halfSideOfCell, verticalCoordinate - halfSideOfCell}, // Center on the current mouse position
+    Coordinates coordinates    = convertIntoWindowCoordinates(cell.x, cell.y, boardSize);
+    const float halfSideOfCell = 1.f / boardSize;
+    ctx.fill                   = p6::Color{1.f, 1.f, 1.f, alphaColor};
+    ctx.circle(p6::Center{coordinates.x + halfSideOfCell, coordinates.y - halfSideOfCell}, // Center on the current mouse position
                p6::Radius{
                    static_cast<float>(0.8 * halfSideOfCell)});
-    const float red  = colorOfIndex(static_cast<int>(cell.x), boardSize);
-    const float blue = colorOfIndex(static_cast<int>(cell.y), boardSize);
-    ctx.fill         = p6::Color{red, 1.f, blue, 1.f};
-    ctx.circle(p6::Center{horizontalCoordinate + halfSideOfCell, verticalCoordinate - halfSideOfCell}, // Center on the current mouse position
+    p6::Color color = colorOfPosition(cell.x, cell.y, boardSize);
+    ctx.fill        = color;
+    ctx.circle(p6::Center{coordinates.x + halfSideOfCell, coordinates.y - halfSideOfCell}, // Center on the current mouse position
                p6::Radius{
                    static_cast<float>(0.5 * halfSideOfCell)});
 }
@@ -59,16 +76,15 @@ void drawWhiteNoughtOverTheBoard(p6::Context& ctx, p6::Color backgroundColor)
 
 void drawCrossAtIndex(const CellIndex cell, size_t boardSize, p6::Context& ctx, float alphaColor)
 {
-    const float horizontalCoordinate = p6::map<float>(static_cast<float>(cell.x), 0.f, static_cast<float>(boardSize), -1.f, 1.f);
-    const float verticalCoordinate   = p6::map<float>(static_cast<float>(cell.y), 0.f, static_cast<float>(boardSize), 1.f, -1.f);
-    const float halfSideOfCell       = 1. / boardSize;
-    ctx.fill                         = p6::Color{1.f, 1.f, 1.f, alphaColor};
-    auto rotation                    = p6::Angle(p6::Radians(M_PI / 4.));
-    ctx.rectangle(p6::Center{horizontalCoordinate + halfSideOfCell, verticalCoordinate - halfSideOfCell}, // Center on the current mouse position
-                  p6::Radii(halfSideOfCell / 4., halfSideOfCell),
+    Coordinates coordinates    = convertIntoWindowCoordinates(cell.x, cell.y, boardSize);
+    const float halfSideOfCell = 1.f / boardSize;
+    ctx.fill                   = p6::Color{1.f, 1.f, 1.f, alphaColor};
+    auto rotation              = p6::Angle(p6::Radians(M_PI / 4.));
+    ctx.rectangle(p6::Center{coordinates.x + halfSideOfCell, coordinates.y - halfSideOfCell}, // Center on the current mouse position
+                  p6::Radii(halfSideOfCell / 4.f, halfSideOfCell),
                   rotation);
-    ctx.rectangle(p6::Center{horizontalCoordinate + halfSideOfCell, verticalCoordinate - halfSideOfCell}, // Center on the current mouse position
-                  p6::Radii(halfSideOfCell / 4., halfSideOfCell),
+    ctx.rectangle(p6::Center{coordinates.x + halfSideOfCell, coordinates.y - halfSideOfCell}, // Center on the current mouse position
+                  p6::Radii(halfSideOfCell / 4.f, halfSideOfCell),
                   -rotation);
 }
 
@@ -100,24 +116,27 @@ void drawBoard(size_t boardSize, p6::Context& ctx)
 {
     for (size_t y = 0; y < boardSize; y++) {
         for (size_t x = 0; x < boardSize; x++) {
-            const float red                  = colorOfIndex(static_cast<int>(x), boardSize);
-            const float blue                 = colorOfIndex(static_cast<int>(y), boardSize);
-            ctx.use_stroke                   = false;
-            ctx.fill                         = p6::Color{red, 1.f, blue, 1.f};
-            const float horizontalCoordinate = p6::map<float>(static_cast<float>(x), 0.f, static_cast<float>(boardSize), -1.f, 1.f);
-            const float verticalCoordinate   = p6::map<float>(static_cast<float>(y), 0.f, static_cast<float>(boardSize), 1.f, -1.f);
-            ctx.square(p6::TopLeftCorner{horizontalCoordinate, verticalCoordinate}, 1. / static_cast<float>(boardSize));
+            p6::Color color         = colorOfPosition(x, y, boardSize);
+            ctx.fill                = color;
+            ctx.use_stroke          = false;
+            Coordinates coordinates = convertIntoWindowCoordinates(x, y, boardSize);
+            ctx.square(p6::TopLeftCorner{coordinates.x, coordinates.y}, 1.f / static_cast<float>(boardSize));
         }
     }
+}
+
+CellIndex convertIntoBoardCoordinates(float x, float y, size_t boardSize)
+{
+    float     boardX           = p6::map<float>(static_cast<float>(x), -1.f, 1.f, 0.f, static_cast<float>(boardSize));
+    float     boardY           = p6::map<float>(static_cast<float>(y), 1.f, -1.f, 0.f, static_cast<float>(boardSize));
+    CellIndex boardCoordinates = {static_cast<int>(boardX), static_cast<int>(boardY)};
+    return boardCoordinates;
 }
 
 std::optional<CellIndex> findHoveredCell(glm::vec2 mouse, size_t boardSize)
 {
     if (mouse.x >= -1 && mouse.x <= 1 && mouse.y >= -1 && mouse.y <= 1) {
-        float     horizontalCoordinate = p6::map<float>(static_cast<float>(mouse.x), -1.f, 1.f, 0.f, static_cast<float>(boardSize));
-        float     verticalCoordinate   = p6::map<float>(static_cast<float>(mouse.y), 1.f, -1.f, 0.f, static_cast<float>(boardSize));
-        CellIndex hoveredCell          = {static_cast<int>(horizontalCoordinate), static_cast<int>(verticalCoordinate)};
-        return hoveredCell;
+        return convertIntoBoardCoordinates(mouse.x, mouse.y, boardSize);
     }
     else {
         return std::nullopt;
@@ -166,11 +185,8 @@ bool doesThePlayerWin(std::vector<CellIndex> playerCells, size_t boardSize)
         }
     }
 
-    //remplacer par any_of
-    for (int numberOfCasesByRank : numberOfCasesPossessedByThePlayer) {
-        if (numberOfCasesByRank == static_cast<int>(boardSize)) {
-            return true;
-        }
+    if (std::any_of(numberOfCasesPossessedByThePlayer.cbegin(), numberOfCasesPossessedByThePlayer.cend(), [boardSize](int number) { return number == static_cast<int>(boardSize); })) {
+        return true;
     }
     return false;
 }
@@ -208,9 +224,8 @@ void checkIfTheGameIsFinished(Player player, bool& game, std::optional<Player>& 
 
 void drawWinner(size_t boardSize, std::optional<Player> winner, p6::Context& ctx)
 {
-    const float red             = colorOfIndex(1, boardSize);
-    const float blue            = colorOfIndex(1, boardSize);
-    p6::Color   backgroundColor = p6::Color{red, 1.f, blue, 1.f};
+    p6::Color backgroundColor = colorOfPosition(boardSize / 2, boardSize / 2, boardSize);
+
     ctx.background(backgroundColor);
     if (winner != std::nullopt) {
         switch (*winner) {
