@@ -3,29 +3,8 @@
 #include <iostream>
 #include "../lib/p6/include/p6/p6.h"
 #include "board.hpp"
+#include "boardGame.hpp"
 #include "playerSymbols.hpp"
-
-enum class Player {
-    Cross,
-    Nought
-};
-
-Player changePlayer(Player player)
-{
-    return static_cast<Player>((static_cast<int>(player) + 1) % 2);
-}
-
-void drawPlayerSymbol(const CellIndex cell, BoardSize boardSize, p6::Context& ctx, float alphaColor, Player player)
-{
-    switch (player) {
-    case Player::Cross:
-        drawCrossAtIndex(cell, boardSize, ctx, alphaColor);
-        break;
-    case Player::Nought:
-        drawNoughtAtIndex(cell, boardSize, ctx, alphaColor);
-        break;
-    }
-}
 
 std::vector<std::vector<bool>> createEmptyBoard(size_t boardSize)
 {
@@ -103,23 +82,6 @@ void checkIfTheGameIsFinished(Player player, bool& game, std::optional<Player>& 
 
     if (boardIsFull(cellIsEmpty, boardSize)) {
         game = false;
-    }
-}
-
-void drawWinner(BoardSize boardSize, std::optional<Player> winner, p6::Context& ctx)
-{
-    p6::Color backgroundColor = colorOfPosition(boardSize.w / 2, boardSize.h / 2, boardSize);
-
-    ctx.background(backgroundColor);
-    if (winner != std::nullopt) {
-        switch (*winner) {
-        case Player::Cross:
-            drawWhiteCrossOverTheBoard(ctx);
-            break;
-        case Player::Nought:
-            drawWhiteNoughtOverTheBoard(ctx, backgroundColor);
-            break;
-        }
     }
 }
 

@@ -1,3 +1,4 @@
+#include "playerSymbols.hpp"
 #include <algorithm>
 #include <iostream>
 #include "../lib/p6/include/p6/p6.h"
@@ -66,4 +67,33 @@ void drawWhiteNoughtOverTheBoard(p6::Context& ctx, p6::Color backgroundColor)
     ctx.fill = backgroundColor;
     ctx.circle(p6::Center{0.f, 0.f},
                p6::Radius{ratio * 0.5f});
+}
+
+void drawPlayerSymbol(const CellIndex cell, BoardSize boardSize, p6::Context& ctx, float alphaColor, Player player)
+{
+    switch (player) {
+    case Player::Cross:
+        drawCrossAtIndex(cell, boardSize, ctx, alphaColor);
+        break;
+    case Player::Nought:
+        drawNoughtAtIndex(cell, boardSize, ctx, alphaColor);
+        break;
+    }
+}
+
+void drawWinner(BoardSize boardSize, std::optional<Player> winner, p6::Context& ctx)
+{
+    p6::Color backgroundColor = colorOfPosition(boardSize.w / 2, boardSize.h / 2, boardSize);
+
+    ctx.background(backgroundColor);
+    if (winner != std::nullopt) {
+        switch (*winner) {
+        case Player::Cross:
+            drawWhiteCrossOverTheBoard(ctx);
+            break;
+        case Player::Nought:
+            drawWhiteNoughtOverTheBoard(ctx, backgroundColor);
+            break;
+        }
+    }
 }
