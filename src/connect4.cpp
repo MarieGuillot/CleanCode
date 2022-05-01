@@ -76,6 +76,7 @@ std::optional<Player> findWinner(std::vector<std::vector<Player>> board, CellInd
         return currentPlayer;
     }
 
+    //no victory
     return std::nullopt;
 }
 
