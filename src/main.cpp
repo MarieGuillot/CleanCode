@@ -11,7 +11,5 @@
 
 int main()
 {
-    //playUntilThePlayerWantToStop(menu, false);
-    playConnect4();
-    //playNoughtsAndCrosses();
+    playUntilThePlayerWantToStop(menu, false);
 }

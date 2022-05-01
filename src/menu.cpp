@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "connect4.hpp"
 #include "game.hpp"
 #include "getInputFromUser.hpp"
 #include "guessNumber.hpp"
@@ -14,11 +15,13 @@ void menu()
     Game hangman("Hangman", &playHangman);
     Game guessNumber("Guess a number", &playGuessANumber);
     Game NoughtsAndCrosses("Noughts and crosses", &playNoughtsAndCrosses);
+    Game connect4("Connect 4", &playConnect4);
 
     std::vector<Game> games;
     games.push_back(hangman);
     games.push_back(guessNumber);
     games.push_back(NoughtsAndCrosses);
+    games.push_back(connect4);
 
     std::cout << "Select the game you want to play." << std::endl;
     for (size_t index = 0; index < games.size(); index++) {
