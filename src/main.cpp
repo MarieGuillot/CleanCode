@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include "connect4.hpp"
 #include "game.hpp"
 #include "getInputFromUser.hpp"
 #include "guessNumber.hpp"
@@ -10,6 +11,7 @@
 
 int main()
 {
-    playUntilThePlayerWantToStop(menu, false);
-    //playNoughtsAndCrosses();
+    //playUntilThePlayerWantToStop(menu, false);
+    //playConnect4();
+    playNoughtsAndCrosses();
 }
