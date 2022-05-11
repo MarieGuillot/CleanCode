@@ -5,6 +5,7 @@
 #include "boardGame.hpp"
 #include "playerSymbols.hpp"
 
+//create a vector of "width of board" empty columns (represented by empty vectors of Players)
 std::vector<std::vector<Player>> prepareEmptyColumns(BoardSize boardSize)
 {
     std::vector<Player>              column;
@@ -41,17 +42,25 @@ bool isBoardFull(std::vector<std::vector<Player>> board, BoardSize boardSize)
     }
 }
 
+// Check that we are not out of range : if there is nothing in the row in a column because the column is too small
+bool theRowExistsInThisColumn(std::vector<std::vector<Player>> board, CellIndex lastTry, int caseChecked)
+{
+    return board[caseChecked].size() > static_cast<size_t>(lastTry.y);
+}
+
 std::optional<Player> findWinner(std::vector<std::vector<Player>> board, CellIndex lastTry)
 {
     Player currentPlayer = board[lastTry.x][lastTry.y];
     //column victory
     int score       = 0;
     int caseChecked = lastTry.y;
+    // Count cases owned by the player in the column, with an index under the case he tried, until a case that he doesn't own is found
     while (caseChecked >= 0 && board[lastTry.x][caseChecked] == currentPlayer) {
         score++;
         caseChecked--;
     }
     caseChecked = lastTry.y + 1;
+    // Count cases owned by the player in the column, with an index above the case he tried, until a case that he doesn't own is found
     while (caseChecked < static_cast<int>(board[lastTry.x].size()) && board[lastTry.x][caseChecked] == currentPlayer) {
         score++;
         caseChecked++;
@@ -63,12 +72,14 @@ std::optional<Player> findWinner(std::vector<std::vector<Player>> board, CellInd
     //row victory
     score       = 0;
     caseChecked = lastTry.x;
-    while (caseChecked >= 0 && board[caseChecked].size() > static_cast<size_t>(lastTry.y) && board[caseChecked][lastTry.y] == currentPlayer) {
+    // Count cases owned by the player in the row, with an index under the case he tried, until a case that he doesn't own is found
+    while (caseChecked >= 0 && theRowExistsInThisColumn(board, lastTry, caseChecked) && board[caseChecked][lastTry.y] == currentPlayer) {
         score++;
         caseChecked--;
     }
     caseChecked = lastTry.x + 1;
-    while (caseChecked < static_cast<int>(board.size()) && board[caseChecked].size() > static_cast<size_t>(lastTry.y) && board[caseChecked][lastTry.y] == currentPlayer) {
+    // Count cases owned by the player in the row, with an index above the case he tried, until a case that he doesn't own is found
+    while (caseChecked < static_cast<int>(board.size()) && theRowExistsInThisColumn(board, lastTry, caseChecked) && board[caseChecked][lastTry.y] == currentPlayer) {
         score++;
         caseChecked++;
     }
@@ -78,6 +89,23 @@ std::optional<Player> findWinner(std::vector<std::vector<Player>> board, CellInd
 
     //no victory
     return std::nullopt;
+}
+
+std::optional<CellIndex> findTheFirstEmptyCaseInTheColumn(int hoveredColumn, size_t boardHeight, int alreadyTakenCases)
+{
+    CellIndex positionTried = {hoveredColumn, static_cast<int>(boardHeight - 1 - alreadyTakenCases)};
+    if (positionTried.y >= 0) { // The column is not full.
+        return positionTried;
+    }
+    else {
+        return std::nullopt;
+    }
+}
+
+// We have the y to draw (which is a decreasing index) and we want the index in the array representing the board (which increases when we add something)
+CellIndex flipYOfCell(CellIndex cell, size_t boardHeight)
+{
+    return {cell.x, static_cast<int>(boardHeight) - 1 - cell.y};
 }
 
 void playConnect4()
@@ -98,13 +126,11 @@ void playConnect4()
         // Define the update function. It will be called repeatedly.
         ctx.update = [&]() {
             if (game) {
-                // Clear the objects that were drawn during the previous update
-                ctx.background({0.f, 0.f, 0.f});
                 drawRectangleBoard(boardSize, ctx);
                 drawBoardSymbols(board, boardSize, ctx);
                 hoveredColumn = findHoveredColumn(ctx.mouse(), boardSize, ctx);
                 if (hoveredColumn) {
-                    positionTried = {*hoveredColumn, static_cast<int>(boardSize.h) - 1 - static_cast<int>(board[*hoveredColumn].size())};
+                    positionTried = findTheFirstEmptyCaseInTheColumn(*hoveredColumn, static_cast<int>(boardSize.h), static_cast<int>(board[*hoveredColumn].size()));
                     drawPlayerSymbol(*positionTried, boardSize, ctx, 0.5f, player);
                 }
                 else {
@@ -112,7 +138,6 @@ void playConnect4()
                 }
             }
             else {
-                //ctx.background({0.f, 0.f, 0.f});
                 drawWinner(boardSize, winner, ctx);
             }
 
@@ -122,15 +147,13 @@ void playConnect4()
                 }
 
                 if (positionTried && hoveredColumn) {
-                    if (positionTried->y >= 0) {
-                        CellIndex tryCoordinates = {*hoveredColumn, static_cast<int>(board[*hoveredColumn].size())};
-                        board[*hoveredColumn].push_back(player);
-                        winner = findWinner(board, tryCoordinates);
-                        if (winner) {
-                            game = false;
-                        }
-                        player = changePlayer(player);
+                    CellIndex tryCoordinates = flipYOfCell(*positionTried, boardSize.h);
+                    board[*hoveredColumn].push_back(player);
+                    winner = findWinner(board, tryCoordinates);
+                    if (winner) {
+                        game = false;
                     }
+                    player = changePlayer(player);
                 }
                 if (isBoardFull(board, boardSize)) {
                     game = false;

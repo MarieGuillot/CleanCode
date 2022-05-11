@@ -10,8 +10,8 @@ p6::Color colorOfPositionInvertedWithAlpha(int x, int y, BoardSize boardSize, fl
         return p6::Color{0.f, 0.f, 0.f, alphaColor};
     }
     else {
-        const float red  = colorOfIndex2(static_cast<int>(x), boardSize.w);
-        const float blue = colorOfIndex2(static_cast<int>(y), boardSize.h);
+        const float red  = colorOfIndex(static_cast<int>(x), boardSize.w);
+        const float blue = colorOfIndex(static_cast<int>(y), boardSize.h);
         return p6::Color{red, 1.f, blue, alphaColor};
     }
 }

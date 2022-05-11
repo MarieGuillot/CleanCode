@@ -21,7 +21,7 @@ bool doYouWantToPlayAgain(bool sameGame)
     return true;
 }
 
-void playUntilThePlayerWantToStop(std::function<void()> playFunction, bool sameGame)
+void playUntilThePlayerWantsToStop(std::function<void()> playFunction, bool sameGame)
 {
     bool game = true;
 

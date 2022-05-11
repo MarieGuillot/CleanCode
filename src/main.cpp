@@ -11,5 +11,5 @@
 
 int main()
 {
-    playUntilThePlayerWantToStop(menu, false);
+    playUntilThePlayerWantsToStop(menu, false);
 }
