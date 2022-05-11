@@ -2,6 +2,7 @@
 
 #include "playAgain.hpp"
 
+// this class represent a game, with its name and the function that must be called to play the game
 class Game {
 public:
     Game(const std::string& name, std::function<void()> play)

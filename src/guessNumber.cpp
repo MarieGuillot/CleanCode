@@ -6,6 +6,7 @@
 #include "getInputFromUser.hpp"
 #include "random.hpp"
 
+// compare the guess with the solution to give a clue
 bool tryNumber(const int guess, const int solution, std::string& answer)
 {
     if (guess < solution) {

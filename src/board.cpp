@@ -20,6 +20,8 @@ p6::Color colorOfPosition(int x, int y, BoardSize boardSize)
     }
 }
 
+// to adjust the board when the user resize the window, find it is the width or the height that limits the board's drawing
+// return the size (in p6 space) of the "limiting factor" (i.e. width or height of the board)
 float referenceLengthToDrawTheBoard(BoardSize boardSize, const p6::Context& ctx)
 {
     float ratio      = ctx.aspect_ratio();

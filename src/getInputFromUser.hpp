@@ -4,8 +4,7 @@
 #include <limits>
 #include <string>
 
-// Utiliser un bool qui part défaut vaut false en paramètre et le faire passer à true si je veux une lettre ?
-
+// ask an input
 template<typename T>
 T getInputFromUser()
 {
@@ -19,4 +18,5 @@ T getInputFromUser()
     return playerInput;
 }
 
+// ask specifically a letter (and not all char)
 char getLetterFromUser();
