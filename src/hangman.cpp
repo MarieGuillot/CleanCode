@@ -7,6 +7,7 @@
 #include "getInputFromUser.hpp"
 #include "random.hpp"
 
+// Create a word composed of numberOfLetters underscores
 std::string wordMadeOfUnderscore(int numberOfLetters)
 {
     std::string word = "";
@@ -17,20 +18,24 @@ std::string wordMadeOfUnderscore(int numberOfLetters)
     return word;
 }
 
+// a class to manage hangman words, with the solution and a string of letters already guessed
+// you win when the two strings are the same
 class hangmanWords {
 public:
     explicit hangmanWords(const std::string& word)
         : _solutionWord(word), _alreadyGuessed(wordMadeOfUnderscore(_solutionWord.length()))
     {
     }
-
+    // return true if the word guessed is the solution (i.e. you win)
     inline bool found() { return _solutionWord == _alreadyGuessed; }
-    void        replaceGuessedWordWithGoodLetters(std::vector<int> positionsOfLetter)
+    // put real letters in the guessed word (at the beginning the word is made of underscores and then you complete it)
+    void replaceGuessedWordWithGoodLetters(std::vector<int> positionsOfLetter)
     {
         for (const auto& location : positionsOfLetter) {
             _alreadyGuessed[location] = _solutionWord[location];
         }
     }
+    // show the guessed word (letters are separated by a space)
     void showGuessedWord()
     {
         for (const char word_letter : _alreadyGuessed) {
@@ -46,8 +51,8 @@ private:
     std::string _alreadyGuessed;
 };
 
-std::string
-    chooseARandomWord()
+// select a random word in the array
+std::string chooseARandomWord()
 {
     constexpr size_t                                    numberOfWords = 4;
     static const std::array<std::string, numberOfWords> words         = {
@@ -71,6 +76,8 @@ bool playerIsAlive(int numberOfLives)
     return numberOfLives > 0;
 }
 
+// return true if the letter is in the word (it can be upper case or lower case, both work)
+// fill the vector positionsOfLetters with the positions of all occurrences of the searched letter
 bool isLetterInTheWordAndWhere(char letter, std::string word, std::vector<int>& positionsOfLetter)
 {
     bool has_found      = false;
@@ -85,6 +92,7 @@ bool isLetterInTheWordAndWhere(char letter, std::string word, std::vector<int>& 
     return has_found;
 }
 
+//return true if the letter is in the word (case sensitive)
 bool isLetterInTheWord(char letter, const std::string& word)
 {
     return std::any_of(word.begin(), word.end(), [&](char word_letter) {
@@ -92,6 +100,7 @@ bool isLetterInTheWord(char letter, const std::string& word)
     });
 }
 
+// Return true if the letter was already tried (i.e. is in the list of good or bad letters)
 bool isLetterAlreadyTried(char letter, const std::string& goodLetters, const std::string& badLetters)
 {
     if (isLetterInTheWord(static_cast<char>(toupper(letter)), goodLetters) || isLetterInTheWord(static_cast<char>(toupper(letter)), badLetters)) {
@@ -109,6 +118,7 @@ bool isLetterAlreadyTried(char letter, const std::string& goodLetters, const std
     return false;
 }
 
+// Tells if you yin or die, and give the answer
 void hangmanConclusion(const uint playerLives, const std::string& solutionWord)
 {
     if (playerIsAlive(playerLives)) {

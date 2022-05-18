@@ -15,7 +15,7 @@ bool doYouWantToPlayAgain(bool sameGame)
     if (doesThePlayerWannaPlay == "no") {
         return false;
     }
-    else if (doesThePlayerWannaPlay != "yes") {
+    else if (doesThePlayerWannaPlay != "yes") { // ask again if the input is not "yes" or "no"
         return doYouWantToPlayAgain(sameGame);
     }
     return true;

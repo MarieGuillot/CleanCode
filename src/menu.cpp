@@ -10,6 +10,7 @@
 #include "noughtsAndCrosses.hpp"
 #include "playAgain.hpp"
 
+// show the menu (games in the vector games), and call the game that you choose
 void menu()
 {
     Game hangman("Hangman", &playHangman);

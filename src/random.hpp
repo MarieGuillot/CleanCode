@@ -5,6 +5,7 @@
 #include <iostream>
 #include <random>
 
+// return a number integer number (as it is a template, you can ask for a size_t)
 template<typename T>
 T giveRandomIntegerNumber(T min, T max)
 {
